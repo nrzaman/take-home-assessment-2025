@@ -25,7 +25,6 @@ def read_config(file_path):
 
 # Allow dynamic retrieval of db config values
 db_config = read_config('../config/db_config.json')
-data_columns = read_config('../config/frontend_columns.json')
 conn = psycopg2.connect("dbname='" + db_config["databaseName"] + "' user='" + db_config["user"] + "' host='" + db_config["host"] + "' password='" + db_config["password"] + "'")
 
 @app.route('/data', methods=['GET'])
@@ -36,13 +35,13 @@ def get_data():
 
     # Define the exact order of frontend field names (camelCase)
     frontend_columns = [
-        data_columns["State"],
-        data_columns["DeadlineInPerson"],
-        data_columns["DeadlineByMail"],
-        data_columns["DeadlineOnline"],
-        data_columns["ElectionDayRegistration"],
-        data_columns["OnlineRegistrationLink"],
-        data_columns["Description"]
+        'state',
+        'deadlineInPerson',
+        'deadlineByMail',
+        'deadlineOnline',
+        'electionDayRegistration',
+        'onlineRegistrationLink',
+        'description'
     ]
 
     # Build result with ordered field names using OrderedDict to guarantee order, 

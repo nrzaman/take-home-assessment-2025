@@ -1,9 +1,0 @@
-{
-    "State": "state",
-    "DeadlineInPerson": "deadlineInPerson",
-    "DeadlineByMail": "deadlineByMail",
-    "DeadlineOnline": "deadlineOnline",
-    "ElectionDayRegistration": "electionDayRegistration",
-    "OnlineRegistrationLink": "onlineRegistrationLink",
-    "Description": "description"
-}
