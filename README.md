@@ -31,19 +31,33 @@ Please follow the below steps to run the application.
 
 These steps are required to be able to run the application on your local machine. The following steps assume that the user is running the application on macOS.
 
-1. Generate a personal access token (PAT) in GitHub if you have not done so already.
-2. Clone this repository (SSH recommended in order to use the PAT, using `git clone`).
-3. Install `npm`
-4. Install `python3`
-5. Run `pip3 install flask`
-6. Run `pip3 install flask_cors`
-7. Run `pip3 install psycopg2`
-8. Run `npm install --no-save`
-9. Install PostgreSQL
-10. Update `src/config/db_config.json` with the relevant database credentials if needed.
-11. Run `npm run db:create-db`
-12. Navigate to `/src/api/` and create a Python virtual environment.
-13. Install `pytest` in `/src/api`
+#### GitHub
+1. Generate an `ssh-key` for GitHub if you have not done so already by following the steps outlined in [this linked document](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+2. Open a Terminal window and clone this repository (SSH recommended in order to use the `ssh-key`, using `git clone`).
+
+#### Installers
+
+1. Install [Homebrew](https://brew.sh/). This will allow you to use the command `brew install` in the Terminal to be able to install most libraries.
+
+#### Python
+1. Open a Terminal and navigate to the parent directory of where you cloned the repository.
+2. Install `python3` by using the command `brew install python`. You may also follow the steps documents at [this link](https://docs.python.org/3/using/mac.html). This should automatically install `pip` or `pip3`. Then, run the following commands:
+    a. Run `pip3 install flask` (Note: Try `pip install` if `pip3` doesn't work)
+    b. Run `pip3 install flask_cors` (Note: Try `pip install` if `pip3` doesn't work)
+    c. Run `pip3 install psycopg2` (Note: Try `pip install` if `pip3` doesn't work)
+    d. Run `pip3 install pytest` (Note: Try `pip install` if `pip3` doesn't work)
+3. Confirm python installation by typing `python --version`
+4. Once confirmed, a python virtual environment needs to be installed. Run `python3 -m venv .venv`.
+5. Then, activate the virtual environment by running `source .venv/bin/activate`
+
+#### NPM
+1. Install `npm` by following the instructions linked [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Run `npm install --no-save`
+
+#### PostgreSQL
+1. Install [PostgreSQL](https://www.postgresql.org/download/macosx/) by using the command `brew install postgresql@vv` where `vv` is the version number you would like to install.
+2. Update `src/config/db_config.json` with the relevant database credentials if needed.
+3. Run `npm run db:create-db`
 
 ### Running
 
@@ -55,9 +69,9 @@ Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A ref
 
 ### Testing
 
-1. Open a terminal window.
+1. Open a Terminal window.
 2. Navigate to the parent directory of the cloned repository and into `src/api`
-3. (Only need to do once) Run `export PYTHONPATH=/path/to/src/api`
+3. Run `export PYTHONPATH=/path/to/src/api`
 4. Run `pytest`
 
 ### Common Debugging Issues
