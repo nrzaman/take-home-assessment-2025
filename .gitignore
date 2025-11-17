@@ -5,4 +5,5 @@ src/api/bin/
 src/api/lib/
 src/api/pyvenv.cfg
 .vscode/
-src/api/__pycache__/*
+src/api/tests/__pycache__/
+src/api/__pycache__/
