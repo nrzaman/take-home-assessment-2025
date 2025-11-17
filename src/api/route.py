@@ -7,8 +7,14 @@ conn = psycopg2.connect("dbname='state_registration_deadlines' user='postgres' h
 app = Flask(__name__)
 CORS(app)  # This enables CORS for all routes by default
 
-@app.route('/test', methods=['GET'])
-def get_test():
+@app.route('/columns', methods=['GET'])
+def get_columns():
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM information_schema.columns WHERE table_name = \'voter_registration_deadlines\';')
+    return jsonify(cur.fetchmany())
+
+@app.route('/data', methods=['GET'])
+def get_data():
     cur = conn.cursor()
     cur.execute('SELECT * FROM voter_registration_deadlines;')
     return jsonify(cur.fetchall())
