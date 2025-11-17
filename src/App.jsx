@@ -6,6 +6,8 @@ const customTheme = createTheme({
   typography: {
     fontFamily: [
       'Raleway',
+      "Helvetica Neue", 
+      'Helvetica',
       'Arial',
       'sans-serif',
     ].join(','),
@@ -13,7 +15,9 @@ const customTheme = createTheme({
     h2: {
       fontSize: '4rem',
       fontWeight: 700,
-    },
+      fontStyle: 'normal',
+      color: '#262d7d',
+    }
   },
 });
 

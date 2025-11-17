@@ -1,55 +1,67 @@
-# SL/VF Technical Take Home
+# Naila Zaman | U.S. Voter Registration Search Tool
 
-> Build a state voter registration search tool
+> This is a simple application that displays voter registration information by state. A user can use this to view relevant voter registration information for all U.S. states (and District of Colombia).
 
-- [Evaluation](#evaluation)
-- [What we are looking for](#what-we-are-looking-for)
-- [Submitting your code](#submitting-your-code)
-- [Questions](#questions)
-- [Running the code](#running-the-code)
+- [Developer requirements](#requirements)
+- [Running the application](#running-the-application)
+- [Future considerations](#future-considerations)
 
-## Evaluation
+## Developer Requirements
 
-1. Using the provided `voter_registration_deadlines.csv`, use the language and ORM framework of your choice to parse and store the info from `voter_registration_deadlines.csv` for each state into a SQL database (this is already done in the sample provided). _*Note: This is a sample of old data taken from various voter registration sites in 2018, and does not represent the current reality of these states. It should only be used for the purposes of this exercise.*_
-2. Create a UI that displays the list of all the states and their voter information. The user should be able to filter and sort this table.
-3. Create an API endpoint that will retrieve the data for this table from the backend DB.
-4. Write tests to validate the API call(s).
-5. Include a README (or edit this one if you choose to fork this repository) that describes the steps necessary for building and running the application as well as running the tests locally.
+Below are the in scope requirements and assumptions that this application was built in accordance to.
 
-You may use any pattern or library that you find suitable to accomplish this assessment, however preference will be given to candidates that show they are able to use at least some of our technologies. Internally, we use Python and SQL Alchemy (SwingLeft) or NodeJS and Knex (VoteForward) backend and for the frontend we use React with Panda-UI and Chakra-UI for styling on the Next.Js framework.
+1. Parsing and storing `voter_registration_deadlines.csv` into a PostgreSQL database
+2. Developing an API endpoint that retrieves the voter information data
+3. Developing a UI that displays a list of all states and their voter information
+4. The ability to filter and sort the voter information table
+5. Developing a UI that is accessible
+6. Developing a UI that is both web and mobile friendly
+7. Writing unit tests to validate the API call(s)
+8. Relevant documentation (README or similar) that describes how to run the application
 
-Additionally, we have provided a sample hello-world framework which you may modify and use for this exercise. This sample already imports the voter data into a postgres DB, and sets up an API endpoint and frontend page for you to work from or use as an example.
+Full UI/UX wireframes are out of scope for this application.
 
-You are welcome to use AI tools on your code test. If you do, please submit your _entire chat transcript_. The mechanism to do this will depend on which tool you use. If you use a command line tool such as Claude Code, you can store a transcript via the "script" command on Mac and Unix/Linux systems. You can also include a zip of ~/.claude/projects/code-test (or similar) if you prefer, but please ensure you do not send materials for any other projects.
+## Running the Application
 
-Alternatively, you may submit an equivalent open-source code sample. If you do this, please only submit samples where you are the only contributor and sole author, or point us at specific commits where you were the sole author. As before, if you used AI to help generate the work, please give a detailed description of how it was used. If you choose to go with this route, please include as much detail as possible about which factors of your sample we should evaluate, and be prepared to discuss your code sample in the follow-up interview.
+This application can currently be run locally. The frontend was developed in React.js using the Material UI framework, and the backend was developed in Python and PostgreSQL.
 
-## What we are looking for
+Please follow the below steps to run the application.
 
-- Does it work? _*Note that you can "mock" an aspect of your solution rather than fully implement it, for example if a feature you want to demonstrate requires additional data. Just be clear in your submission notes what was mocked.*_
-- Is the code clean and accessible to others?
-- Does the code handle edge case conditions?
+### Prerequisites
 
-For the UX, we do not expect a fancy graphic design or style, but please make sure that the UI is clean and usable on both desktop and mobile web browsers.
+These steps are required to be able to run the application on your local machine.
 
-## Submitting Your Code
+1. Generate a personal access token (PAT) in GitHub if you have not done so already.
+2. Clone this repository (SSH recommended in order to use the PAT, using `git clone`).
+3. Install `npm`
+4. Install `python`
+5. Run `npm install --no-save`
+6. Install PostgreSQL
+7. Update `src/config/db_config.json` with the relevant database credentials if needed.
+8. Run `npm run db:create-db`
+9. Navigate to `/src/api/` and create a Python virtual environment.
+10. Install `pytest` in `/src/api`
 
-The preferred way to submit your code is to create a fork of this repository, push your changes to the forked reposistory, and then grant access to your forked repository to your interviewer. Your interviewer is listed in the email you received inviting you to this technical interview.
+### Running
 
-Alternatively, you may submit the code in the form of a zip file and email it to your interviewer. If you do this, please be sure to include a README in your submission with full details on how to set up and run your code.
+1. (Optional) Update `src/config/local_api.json` with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
+1. Open 2 terminal windows.
+2. In the first terminal window, navigate to the parent directory of the cloned repository and into `src/api` and run `python route.py`
+3. In the second terminal window, navigate to the parent directory of the cloned repository and run `npm run start`
 
-## Questions
+This should trigger the web browser opening to `localhost:3000` with the application.
 
-If you have any questions, please reply to the invitation email you were sent for this technical interview.
+### Testing
 
-## Running The Code
+1. Open a terminal window.
+2. Navigate to the parent directory of the cloned repository and into `src/api`
+3. (Only need to do once) Run `export PYTHONPATH=/path/to/src/api`
+4. Run `pytest`
 
-[If you choose to clone this repo and work from the hello-world sample, please use the directions below. If you implement another solution using a different language or framework, please update these directions to reflect your code.]
+### Common Debugging Issues
 
-### Installation
+If there is a data load issue, it's possible that it is blocked by a CORS policy. While there was code written to address this, `src/config/local_api.json` may need to be updated with a different port number.
 
-1. Clone the repo locally.
-2. `npm install --no-save`
-3. `npm run db:create-db`
-4. Navigate to `src/api` and run `python route.py`
-4. In a separate terminal window, navigate to the parent directory (where this repo was cloned) and run `npm start`
+## Future Considerations
+
+Currently, this application is using MUI DataGrid for sorting and filtering on the frontend. While this works for a small dataset, one consideration would be to do the sorting and filtering on the backend to increase performance.

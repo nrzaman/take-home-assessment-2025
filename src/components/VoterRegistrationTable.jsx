@@ -7,7 +7,7 @@ import configData from '../config/local_api.json';
 const LOCAL_API = 'http://' + configData['serverHost'] + ':' + configData['serverPort'] + '/data';
 
 const columns = [
-  { field: 'state', headerName: 'State', width: 130 },
+  { field: 'state', headerName: 'State', width: 130},
   { field: 'deadlineInPerson', headerName: 'Registration Deadline In-Person', width: 200 },
   { field: 'deadlineByMail', headerName: 'Registration Deadline By Mail', width: 200 },
   { field: 'deadlineOnline', headerName: 'Registration Deadline Online', width: 200 },
@@ -36,8 +36,17 @@ export default function VoterRegistrationTable() {
         columns={columns}
         getRowId={(row) => row.state}
         initialState={{ pagination: { paginationModel } }}
-        pageSizeOptions={[5, 10, 25, 51]}
-        sx={{ border: 1 }}
+        pageSizeOptions={[5, 10, 25, 50, 100]}
+        sx={{
+          border: 2,
+          '& .MuiDataGrid-cell:hover': {
+            color: '#2c74ff',
+          },
+          '& .MuiDataGrid-columnHeaderTitle': {
+            fontWeight: 900,
+            color: '#262d7d'
+          }
+        }}
       />
     </Paper>
   );

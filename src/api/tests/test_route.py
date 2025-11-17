@@ -1,12 +1,11 @@
 import pytest
 import sys
 import route
+from route import app
 from pathlib import Path
 
 # Add the parent directory to sys.path to import route module
 sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from route import app
 
 # All expected 50 states + District of Colombia to be included in the response
 states = ["Alabama", 
