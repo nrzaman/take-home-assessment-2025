@@ -51,6 +51,8 @@ These steps are required to be able to run the application on your local machine
 
 This should trigger the web browser opening to `localhost:3000` with the application.
 
+Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
+
 ### Testing
 
 1. Open a terminal window.
