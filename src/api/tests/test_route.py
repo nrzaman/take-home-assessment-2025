@@ -1,5 +1,6 @@
 import pytest
 import sys
+import route
 from pathlib import Path
 
 # Add the parent directory to sys.path to import route module
@@ -68,6 +69,7 @@ def client():
     with app.test_client() as client:
         yield client
 
+# Tests API route that it retrieves expected voter information data
 def test_get_data(client):
     response = client.get("/data")
     # Check for a successful response
@@ -75,3 +77,12 @@ def test_get_data(client):
     # Assert expected content (all 50 states + District of Colombia) in the response
     for s in states:
         assert s.encode() in response.data  
+
+# Tests helper function such that it retrieves expected config values from config file
+def test_read_config():
+    config = route.read_config('../config/local_api.json')
+    assert "serverHost" in config
+    assert config["serverHost"] == "127.0.0.1"
+    assert "serverPort" in config
+    assert config["serverPort"] == 4000
+    

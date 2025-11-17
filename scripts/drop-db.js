@@ -1,11 +1,12 @@
 const { Client } = require("pg");
+const dbConfig = require("../src/config/db_config.json");
 
 // Update these values with your PostgreSQL credentials
-const user = "postgres";
-const password = "test";
-const host = "localhost";
-const port = 5432;
-const databaseToDrop = "state_registration_deadlines";
+const user = dbConfig.user;
+const password = dbConfig.password;
+const host = dbConfig.host;
+const port = dbConfig.port;
+const newDatabase = dbConfig.databaseName;
 
 // Connect to the default 'postgres' database
 const client = new Client({

@@ -1,0 +1,8 @@
+{
+    "user": "postgres",
+    "password": "test",
+    "host": "localhost",
+    "port": 5432,
+    "databaseName": "state_registration_deadlines",
+    "tableName": "voter_registration_deadlines"
+}

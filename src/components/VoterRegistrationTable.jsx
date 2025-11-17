@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react"
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
+import configData from '../config/local_api.json'
+import dataColumns from '../config/frontend_columns.json'
 
 // Local API endpoint to retrieve voter information data
-const LOCAL_API = 'http://127.0.0.1:5000/data';
+const LOCAL_API = 'http://' + configData['serverHost'] + ':' + configData['serverPort'] + '/data';
 
 const columns = [
-  { field: 'state', headerName: 'State', width: 130 },
-  { field: 'deadlineInPerson', headerName: 'Registration Deadline In-Person', width: 200 },
-  { field: 'deadlineByMail', headerName: 'Registration Deadline By Mail', width: 200 },
-  { field: 'deadlineOnline', headerName: 'Registration Deadline Online', width: 200 },
-  { field: 'electionDayRegistration', headerName: 'Election Day Registration', width: 200 },
-  { field: 'onlineRegistrationLink', headerName: 'Online Registration Link', width: 500 },
-  { field: 'description', headerName: 'Description', width: 400 },
+  { field: dataColumns["State"], headerName: 'State', width: 130 },
+  { field: dataColumns["DeadlineInPerson"], headerName: 'Registration Deadline In-Person', width: 200 },
+  { field: dataColumns["DeadlineByMail"], headerName: 'Registration Deadline By Mail', width: 200 },
+  { field: dataColumns["DeadlineOnline"], headerName: 'Registration Deadline Online', width: 200 },
+  { field: dataColumns["DeadlElectionDayRegistrationneInPerson"], headerName: 'Election Day Registration', width: 200 },
+  { field: dataColumns["OnlineRegistrationLink"], headerName: 'Online Registration Link', width: 500 },
+  { field: dataColumns["Description"], headerName: 'Description', width: 400 },
 ];
 
 const paginationModel = { page: 0, pageSize: 5 };

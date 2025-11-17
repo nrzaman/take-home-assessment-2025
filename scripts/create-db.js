@@ -1,14 +1,15 @@
 const { Client } = require("pg");
 const fs = require("fs");
 const csv = require("csv-parser");
+const dbConfig = require("../src/config/db_config.json");
 const { Sequelize, DataTypes } = require("sequelize");
 
 // Update these values with your PostgreSQL credentials
-const user = "postgres";
-const password = "test";
-const host = "localhost";
-const port = 5432;
-const newDatabase = "state_registration_deadlines";
+const user = dbConfig.user;
+const password = dbConfig.password;
+const host = dbConfig.host;
+const port = dbConfig.port;
+const newDatabase = dbConfig.databaseName;
 
 // Connect to the default 'postgres' database
 const client = new Client({
@@ -51,7 +52,7 @@ const VoterRegistrationDeadline = sequelize.define(
         Description: DataTypes.STRING,
     },
     {
-        tableName: "voter_registration_deadlines",
+        tableName: dbConfig.tableName,
         timestamps: false,
     }
 );
