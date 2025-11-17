@@ -1,11 +1,29 @@
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Header from './components/Header'
 import VoterRegistrationTable from './components/VoterRegistrationTable';
 
-function App() {
+const customTheme = createTheme({
+  typography: {
+    fontFamily: [
+      'Raleway',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+    // Override h2
+    h2: {
+      fontSize: '4rem',
+      fontWeight: 700,
+    },
+  },
+});
 
+function App() {
   return (
     <main>
-      <h1>U.S. Voter Registration Information</h1>
-      < VoterRegistrationTable></VoterRegistrationTable>
+      <ThemeProvider theme={customTheme}>
+        < Header></Header>
+        < VoterRegistrationTable></VoterRegistrationTable>
+      </ThemeProvider>
     </main>
   );
 }
