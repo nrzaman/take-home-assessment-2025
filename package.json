@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && python3 ./src/api/route.py",
     "build": "react-scripts build",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "db:create-db": "node ./scripts/create-db.js",
@@ -23,7 +24,6 @@
     "pg": "^8.16.1",
     "pg-hstore": "^2.3.4",
     "react": "^18.2.0",
-    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "sequelize": "^6.37.7",
@@ -47,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "source-map-explorer": "^2.5.3"
   }
 }

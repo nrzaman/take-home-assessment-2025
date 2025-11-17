@@ -29,27 +29,27 @@ Please follow the below steps to run the application.
 
 ### Prerequisites
 
-These steps are required to be able to run the application on your local machine.
+These steps are required to be able to run the application on your local machine. The following steps assume that the user is running the application on macOS.
 
 1. Generate a personal access token (PAT) in GitHub if you have not done so already.
 2. Clone this repository (SSH recommended in order to use the PAT, using `git clone`).
 3. Install `npm`
-4. Install `python`
-5. Run `npm install --no-save`
-6. Install PostgreSQL
-7. Update `src/config/db_config.json` with the relevant database credentials if needed.
-8. Run `npm run db:create-db`
-9. Navigate to `/src/api/` and create a Python virtual environment.
-10. Install `pytest` in `/src/api`
+4. Install `python3`
+5. Run `pip3 install flask`
+6. Run `pip3 install flask_cors`
+7. Run `pip3 install psycopg2`
+8. Run `npm install --no-save`
+9. Install PostgreSQL
+10. Update `src/config/db_config.json` with the relevant database credentials if needed.
+11. Run `npm run db:create-db`
+12. Navigate to `/src/api/` and create a Python virtual environment.
+13. Install `pytest` in `/src/api`
 
 ### Running
 
 1. (Optional) Update `src/config/local_api.json` with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
-1. Open 2 terminal windows.
-2. In the first terminal window, navigate to the parent directory of the cloned repository and into `src/api` and run `python route.py`
-3. In the second terminal window, navigate to the parent directory of the cloned repository and run `npm run start`
-
-This should trigger the web browser opening to `localhost:3000` with the application.
+2. Navigate to the parent directory of the cloned repository and run `startApplication.sh`. This should trigger the web browser opening to `localhost:3000` with the application.
+3. If needed, Ctrl + C to exit the application.
 
 Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
 
@@ -63,6 +63,8 @@ Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A ref
 ### Common Debugging Issues
 
 If there is a data load issue, it's possible that it is blocked by a CORS policy. While there was code written to address this, `src/config/local_api.json` may need to be updated with a different port number.
+
+Error logs for any backend issues can be found in `src/api/backend-error.log`.
 
 ## Future Considerations
 
