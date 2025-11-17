@@ -7,7 +7,9 @@ conn = psycopg2.connect("dbname='state_registration_deadlines' user='postgres' h
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
-CORS(app)  # This enables CORS for all routes by default
+
+# This enables CORS for all routes by default
+CORS(app)
 
 @app.route('/data', methods=['GET'])
 def get_data():
@@ -26,7 +28,9 @@ def get_data():
         'description'
     ]
 
-    # Build result with ordered field names using OrderedDict to guarantee order
+    # Build result with ordered field names using OrderedDict to guarantee order, 
+    # #=and so that the frontend DataGrid component can properly identify the state as a unique ID for 
+    # the table.
     r = []
     for row in cur.fetchall():
         row_dict = OrderedDict()
