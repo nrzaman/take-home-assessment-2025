@@ -42,10 +42,10 @@ These steps are required to be able to run the application on your local machine
 #### Python
 1. Open a Terminal and navigate to the parent directory of where you cloned the repository.
 2. Install `python3` by using the command `brew install python`. You may also follow the steps documents at [this link](https://docs.python.org/3/using/mac.html). This should automatically install `pip` or `pip3`. Then, run the following commands:
-    a. Run `pip3 install flask` (Note: Try `pip install` if `pip3` doesn't work)
-    b. Run `pip3 install flask_cors` (Note: Try `pip install` if `pip3` doesn't work)
-    c. Run `pip3 install psycopg2` (Note: Try `pip install` if `pip3` doesn't work)
-    d. Run `pip3 install pytest` (Note: Try `pip install` if `pip3` doesn't work)
+- Run `pip3 install flask` (Note: Try `pip install` if `pip3` doesn't work)
+- Run `pip3 install flask_cors` (Note: Try `pip install` if `pip3` doesn't work)
+- Run `pip3 install psycopg2` (Note: Try `pip install` if `pip3` doesn't work)
+- Run `pip3 install pytest` (Note: Try `pip install` if `pip3` doesn't work)
 3. Confirm python installation by typing `python --version`
 4. Once confirmed, a python virtual environment needs to be installed. Run `python3 -m venv .venv`.
 5. Then, activate the virtual environment by running `source .venv/bin/activate`
