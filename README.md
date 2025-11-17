@@ -48,7 +48,8 @@ If you have any questions, please reply to the invitation email you were sent fo
 
 ### Installation
 
-1. pull down the repo.
+1. Clone the repo locally.
 2. `npm install --no-save`
 3. `npm run db:create-db`
-4. `npm run dev`
+4. Navigate to `src/api` and run `python route.py`
+4. In a separate terminal window, navigate to the parent directory (where this repo was cloned) and run `npm start`

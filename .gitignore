@@ -1,3 +1,6 @@
 node_modules
 .next/
 next-env.d.ts
+src/api/bin/
+src/api/lib/
+src/api/pyvenv.cfg
