@@ -34,14 +34,14 @@ export default function VoterRegistrationTable() {
     }, [])
 
   return (
-    <Paper sx={{ height: 600, width: '100%' }}>
+    <Paper sx={{ height: 400, width: '100%' }}>
       <DataGrid 
         rows={tableData}
         columns={columns}
         getRowId={(row) => row.state}
         initialState={{ pagination: { paginationModel } }}
         pageSizeOptions={[5, 10, 25, 51]}
-        sx={{ border: 0 }}
+        sx={{ border: 1 }}
       />
     </Paper>
   );

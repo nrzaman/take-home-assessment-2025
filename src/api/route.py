@@ -29,7 +29,7 @@ def get_data():
     ]
 
     # Build result with ordered field names using OrderedDict to guarantee order, 
-    # #=and so that the frontend DataGrid component can properly identify the state as a unique ID for 
+    # and so that the frontend DataGrid component can properly identify the state as a unique ID for 
     # the table.
     r = []
     for row in cur.fetchall():
@@ -42,4 +42,5 @@ def get_data():
     return jsonify(r)
 
 if __name__ == '__main__':
-    app.run()
+    # Run server on localhost port 5000
+    app.run("127.0.0.1", 5000)
