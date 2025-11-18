@@ -1,6 +1,8 @@
 # Naila Zaman | U.S. Voter Registration Search Tool
 
-> This is a simple application that displays voter registration information by state. A user can use this to view relevant voter registration information for all U.S. states (and District of Colombia).
+This is a simple application that displays voter registration information by state. A user can use this to view relevant voter registration information for all U.S. states (and District of Colombia).
+
+<img width="1940" height="753" alt="image" src="https://github.com/user-attachments/assets/ea3c102d-fb5e-4c48-b7e6-2bba76c8dfa3" />
 
 - [Developer requirements](#requirements)
 - [AI output](#ai-output)
