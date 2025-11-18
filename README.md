@@ -54,17 +54,17 @@ git clone git@github.com:nrzaman/take-home-assessment-2025.git
 
 #### Installers
 
-1. For macOS: Install [Homebrew](https://brew.sh/). This will allow you to use the command `brew install` in the Terminal to be able to install most libraries.
-2. For Windows: No special installer is needed here.
+1. **For macOS:** Install [Homebrew](https://brew.sh/). This will allow you to use the command `brew install` in the Terminal to be able to install most libraries.
+2. **For Windows:** No special installer is needed here.
 
 #### Python
 1. Open Terminal (macOS) or PowerShell (Windows) and navigate to the parent directory of where you cloned the repository (most likely named `take-home-assessment-2025`).
 2. Install `python3`:
-- For macOS, follow the steps documented at [this link](https://docs.python.org/3/using/mac.html) OR use the following command in Terminal:
+- **For macOS:** Follow the steps documented at [this link](https://docs.python.org/3/using/mac.html) OR use the following command in Terminal:
 ```
 brew install python
 ```
-- For Windows, follow the steps documented at [this link](https://www.python.org/downloads/windows/) for the latest **Python** version. Please ensure `Add Python to PATH` is selected.
+- **For Windows:** Follow the steps documented at [this link](https://www.python.org/downloads/windows/) for the latest **Python** version. Please ensure `Add Python to PATH` is selected.
 3. Confirm **Python** installation by running the following in Terminal (macOS) or PowerShell (Windows):
 ```
 python --version
@@ -74,11 +74,11 @@ python --version
 python3 -m venv .venv
 ```
 5. Activate the virtual environment:
-- For macOS, use the following command in Terminal:
+- **For macOS:** Use the following command in Terminal:
 ```
 source .venv/bin/activate
 ```
-- For Windows, use the following command in PowerShell:
+- **For Windows:** use the following command in PowerShell:
 ```
 .venv\Scripts\activate
 ```
@@ -128,7 +128,7 @@ docker ps
 ```
 
 #### PostgreSQL
-1. Install PostgreSQL by following the steps at [this link](https://www.postgresql.org/download/) for either operating system
+1. Install **PostgreSQL** by following the steps at [this link](https://www.postgresql.org/download/) for either operating system
 - For macOS, you may also open a Terminal window (or use an existing one you have open) and run the following command (replaceing `vv` with version number):
 ```
 brew install postgresql@vv
@@ -178,7 +178,7 @@ npm start
 
 ### Testing
 
-For macOS only, backend and frontend tests can be run together by running the following command from the parent directory of the cloned repository in a Terminal window:
+**For macOS only:** backend and frontend tests can be run together by running the following command from the parent directory of the cloned repository in a Terminal window:
 ```
 ./runTests.sh
 ```
@@ -191,16 +191,16 @@ For both operating systems, tests can be run separately by following the below s
 ```
 cd src/api
 ```
-2. (First time and macOS only) Run this command (replacing `/absolute/path/to` with your relevant path) so the test file recognizes `route.py` as the primary backend app for the unit test:
+2. (First time and **macOS only**) Run this command (replacing `/absolute/path/to` with your relevant path) so the test file recognizes `route.py` as the primary backend app for the unit test:
 ```
 export PYTHONPATH=/absolute/path/to/src/api
 ```
 3. Run the backend tests:
-- For macOS, run the following command in [src/api](src/api) from Terminal:
+- **For macOS:** Run the following command in [src/api](src/api) from Terminal:
 ```
 pytest
 ```
-- For Windows, run the following command from the parent directory from PowerShell:
+- **For Windows:** Run the following command from the parent directory from PowerShell:
 ```
 python -m pytest src/api/tests/test_route.py -v
 ```
