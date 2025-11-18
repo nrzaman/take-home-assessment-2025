@@ -3,6 +3,7 @@
 > This is a simple application that displays voter registration information by state. A user can use this to view relevant voter registration information for all U.S. states (and District of Colombia).
 
 - [Developer requirements](#requirements)
+- [AI output](#ai-output)
 - [Running the application](#running-the-application)
 - [Future considerations](#future-considerations)
 
@@ -27,9 +28,9 @@ Full UI/UX wireframes are out of scope for this application.
 ## AI Output
 
 AI Output can be found in these files:
-- [a relative link](OPTIMIZATION_SUMMARY.md)
-- [a relative link](TEST_COVERAGE.md)
-- [a relative link](zaman-claude-output.zip)
+- [OPTIMIZATION_SUMMARY.md](OPTIMIZATION_SUMMARY.md)
+- [TEST_COVERAGE.md](TEST_COVERAGE.md)
+- [zaman-claude-output.zip](zaman-claude-output.zip)
 
 ## Running the Application
 
