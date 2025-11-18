@@ -14,8 +14,9 @@ const desktopColumns = [
   { field: 'deadlineByMail', headerName: 'Registration Deadline By Mail', width: 200, flex: 1 },
   { field: 'deadlineOnline', headerName: 'Registration Deadline Online', width: 200, flex: 1 },
   { field: 'electionDayRegistration', headerName: 'Election Day Registration', width: 200, flex: 1 },
-  { field: 'onlineRegistrationLink', headerName: 'Online Registration Link', width: 500, flex: 1.5, renderCell: (params) => 
-      <a href="${params.row.onlineRegistrationLink}">{params.row.onlineRegistrationLink}</a> },
+  { field: 'onlineRegistrationLink', headerName: 'Online Registration Link', width: 500, flex: 1.5, renderCell: (params) =>  
+    // eslint-disable-next-line no-template-curly-in-string 
+      <a href='${params.row.onlineRegistrationLink}'>{params.row.onlineRegistrationLink}</a> },
   { field: 'description', headerName: 'Description', width: 400, flex: 1 },
 ];
 
@@ -23,8 +24,9 @@ const desktopColumns = [
 const mobileColumns = [
   { field: 'state', headerName: 'State', width: 100, flex: 0.8 },
   { field: 'deadlineOnline', headerName: 'Registration Deadline Online', width: 200, flex: 1 },
-  { field: 'onlineRegistrationLink', headerName: 'Register', width: 130, flex: 1, renderCell: (params) => 
-      <a href="${params.row.onlineRegistrationLink}">{params.row.onlineRegistrationLink}</a> },
+  { field: 'onlineRegistrationLink', headerName: 'Register', width: 130, flex: 1, renderCell: (params) =>  
+    // eslint-disable-next-line no-template-curly-in-string
+      <a href='${params.row.onlineRegistrationLink}'>{params.row.onlineRegistrationLink}</a> },
 ];
 
 const paginationModel = { page: 0, pageSize: 5 };

@@ -8,7 +8,7 @@ cd ../..
 
 # Start the React frontend
 echo "Starting React frontend tests..."
-npm test
+npm test -- --watchAll=false
 
 # Trap Ctrl+C (SIGINT) and call the cleanup function
 trap SIGINT
