@@ -24,6 +24,13 @@ Full UI/UX wireframes are out of scope for this application.
 ### Assumptions
 1. On mobile, only 3 columns are displayed for better performance: `State`, `Registration Deadline Online`, and `Register`. This is operating under the assumption that a mobile user would most likely be looking for a way to register online via mobile, as opposed to other methods.
 
+## AI Output
+
+AI Output can be found in these files:
+- OPTIMIZATION_SUMMARY.md
+- TEST_COVERAGE.md
+- zaman-claude-output.zip
+
 ## Running the Application
 
 This application can currently be run locally. The frontend was developed in React.js using the Material UI framework, and the backend was developed in Python and PostgreSQL.
@@ -78,9 +85,18 @@ Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A ref
 
 ### Testing
 
+Both backend and frontend tests can be run together by running `./runTests.sh` from the parent directory of the cloned repository. If you choose to do this, please first follow Step 2 of under the Backend section below.
+
+Otherwise, tests can be run separately by following the below steps.
+
+#### Backend
 1. Open a Terminal window and navigate to the parent directory of the cloned repository and into `src/api`.
-2. Run `export PYTHONPATH=/path/to/src/api`. Otherwise, the test file will not recognize `route.py` as the primary backend app for the unit tests.
+2. (First time only) Run `export PYTHONPATH=/path/to/src/api`. Otherwise, the test file will not recognize `route.py` as the primary backend app for the unit tests.
 3. Run `pytest` in `src/api`
+
+#### Frontend
+1. Open a Terminal window and navigate to the parent directory of the cloned repository.
+2. Run `npm test`
 
 ### Debugging
 

@@ -12,7 +12,7 @@ function HeaderComponent() {
         U.S. Voter Information
       </Typography>
       <Typography variant="subtitle1">
-        The table below includes a list of voter information by state. Please use the horizontal scrollbar on the table to view all columns.<br></br><br></br>
+        The table below includes a list of voter information by state. Column widths are adjustable to view the full contents in a given row. If you do adjust the column sizes, please use the horizontal scrollbar on the table to view all columns.<br></br><br></br>
       </Typography>
       {!isMobile && (
         <Typography variant="subtitle1">
@@ -24,9 +24,6 @@ function HeaderComponent() {
           In order to find your state, please use the search filters by clicking the 3-dot menu in the "State" column, clicking "Filter", and typing in your state. All other columns are similarly sortable and searchable.<br></br><br></br>
         </Typography>
       )}
-      <Typography variant="subtitle1">
-         Column widths are also adjustable to view the full contents in a given row.<br></br><br></br>
-      </Typography>
       <Typography variant="subtitle1">
         Happy voting!
       </Typography>

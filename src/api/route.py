@@ -38,9 +38,10 @@ def read_config(file_path):
         logger.error(f"Error: Invalid JSON format in '{file_path}'.")
         return None
 
-# Allow dynamic retrieval of db config values
-db_config = read_config('../config/db_config.json')    
+# Default db_config
+db_config = read_config('../config/db_config.json')
 
+# Helper function to connect to the database
 def connect_to_db():
     try:
         logger.info(f"Database connection was successful.")
