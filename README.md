@@ -62,25 +62,29 @@ These steps are required to be able to run the application on your local machine
 
 #### NPM
 1. Install `npm` by following the instructions linked [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. In a Terminal window, navigate to the parent directory of where you cloned the repository (most likely named `take-home-assessment-2025`).
 2. Run `npm install --no-save`
 
 #### Docker / Colima
-1. Install Docker by running `brew install docker`.
-2. Install Colima by running `brew install colima`.
-3. Run `colima start`.
-4. Confirm that Docker is running by typing `docker ps`.
+1. Open a Terminal window (or use an existing one you have open).
+2. Install Docker by running `brew install docker`.
+3. Install Colima by running `brew install colima`.
+4. Run `colima start`.
+5. Confirm that Docker is running by typing `docker ps`.
 
 #### PostgreSQL
-1. Install [PostgreSQL](https://www.postgresql.org/download/macosx/) by using the command `brew install postgresql@vv` where `vv` is the version number you would like to install.
-2. (Optional) Update `src/config/db_config.json` with your custom database credentials (username and password).
-3. In a new Terminal window, run `docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres`, where `[PASSWORD]` is the password specified in `src/config/db_config.json` and `[USERNAME]` is the username specified in `src/config/db_config.json`.
-3. Run `npm run db:create-db` in your original Terminal window.
+1. Open a Terminal window (or use an existing one you have open).
+2. Install [PostgreSQL](https://www.postgresql.org/download/macosx/) by using the command `brew install postgresql@vv` where `vv` is the version number you would like to install.
+3. (Optional) Update `src/config/db_config.json` with your custom database credentials (username and password).
+4. In a new Terminal window, run `docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres`, where `[PASSWORD]` is the password specified in `src/config/db_config.json` and `[USERNAME]` is the username specified in `src/config/db_config.json`.
+5. Run `npm run db:create-db` in your original Terminal window.
 
 ### Running
 
-1. (Optional) Update `src/config/local_api.json` with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
-2. Navigate to the parent directory of the cloned repository and run `./startApplication.sh`. This should trigger the web browser opening to `localhost:3000` with the application.
-3. If needed, Ctrl + C in the Terminal window to exit the application.
+1. Open a Terminal window (or use an existing one you have open).
+2. (Optional) Update `src/config/local_api.json` with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
+3. Navigate to the parent directory of the cloned repository and run `./startApplication.sh`. This should trigger the web browser opening to `localhost:3000` with the application.
+4. If needed, Ctrl + C in the Terminal window to exit the application.
 
 Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
 
