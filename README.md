@@ -1,54 +1,110 @@
-# SL/VF Technical Take Home
+# Naila Zaman | U.S. Voter Registration Search Tool
 
-> Build a state voter registration search tool
+This is a simple application that displays voter registration information by state. A user can use this to view relevant voter registration information for all U.S. states (and District of Colombia).
 
-- [Evaluation](#evaluation)
-- [What we are looking for](#what-we-are-looking-for)
-- [Submitting your code](#submitting-your-code)
-- [Questions](#questions)
-- [Running the code](#running-the-code)
+The frontend was developed in **React.js** using the **Material UI framework**, and the backend was developed in **Python** using the **Flask framework** and **PostgreSQL**.
 
-## Evaluation
+<img width="1940" height="753" alt="Image is a screenshot of the application. There is a header in dark blue that states U.S. Voter Registration, some brief instruction subtitle text, and a table displaying 5 rows of state voter registration data." src="https://github.com/user-attachments/assets/ea3c102d-fb5e-4c48-b7e6-2bba76c8dfa3" />
 
-1. Using the provided `voter_registration_deadlines.csv`, use the language and ORM framework of your choice to parse and store the info from `voter_registration_deadlines.csv` for each state into a SQL database (this is already done in the sample provided). _*Note: This is a sample of old data taken from various voter registration sites in 2018, and does not represent the current reality of these states. It should only be used for the purposes of this exercise.*_
-2. Create a UI that displays the list of all the states and their voter information. The user should be able to filter and sort this table.
-3. Create an API endpoint that will retrieve the data for this table from the backend DB.
-4. Write tests to validate the API call(s).
-5. Include a README (or edit this one if you choose to fork this repository) that describes the steps necessary for building and running the application as well as running the tests locally.
+- [Engineering Requirements](#engineering-requirements)
+- [AI Output](#ai-output)
+- [Prerequisite Environment Setup](#prerequisite-environment-setup)
+- [Running the Application](#running-the-application)
+- [Testing](#testing)
+- [Future considerations](#future-considerations)
 
-You may use any pattern or library that you find suitable to accomplish this assessment, however preference will be given to candidates that show they are able to use at least some of our technologies. Internally, we use Python and SQL Alchemy (SwingLeft) or NodeJS and Knex (VoteForward) backend and for the frontend we use React with Panda-UI and Chakra-UI for styling on the Next.Js framework.
+## Engineering Requirements
 
-Additionally, we have provided a sample hello-world framework which you may modify and use for this exercise. This sample already imports the voter data into a postgres DB, and sets up an API endpoint and frontend page for you to work from or use as an example.
+Please see the following document for the original instructions behind creating this application:
+- [SL/VF Technical Take Home Instructions](https://github.com/nrzaman/take-home-assessment-2025/wiki/SL-VF-Technical-Take-Home-Instructions)
 
-You are welcome to use AI tools on your code test. If you do, please submit your _entire chat transcript_. The mechanism to do this will depend on which tool you use. If you use a command line tool such as Claude Code, you can store a transcript via the "script" command on Mac and Unix/Linux systems. You can also include a zip of ~/.claude/projects/code-test (or similar) if you prefer, but please ensure you do not send materials for any other projects.
+### Assumptions
+1. Full UI/UX wireframes are out of scope for this iteration of the application.
+2. Search and filtering is done on a per column basis.
+3. Mobile users would most likely use this application for quick online registration information and a CTA. Therefore, only 3 columns are displayed for better performance on mobile: `State`, `Registration Deadline Online`, and `Register Link`.
 
-Alternatively, you may submit an equivalent open-source code sample. If you do this, please only submit samples where you are the only contributor and sole author, or point us at specific commits where you were the sole author. As before, if you used AI to help generate the work, please give a detailed description of how it was used. If you choose to go with this route, please include as much detail as possible about which factors of your sample we should evaluate, and be prepared to discuss your code sample in the follow-up interview.
+## AI Output
 
-## What we are looking for
+AI Output can be found in this folder:
 
-- Does it work? _*Note that you can "mock" an aspect of your solution rather than fully implement it, for example if a feature you want to demonstrate requires additional data. Just be clear in your submission notes what was mocked.*_
-- Is the code clean and accessible to others?
-- Does the code handle edge case conditions?
+- [/ai_reports](/ai_reports)
 
-For the UX, we do not expect a fancy graphic design or style, but please make sure that the UI is clean and usable on both desktop and mobile web browsers.
+This folder includes test coverage and optimization reports, as well as a `.zip` file containing the Claude logs used on this project.
 
-## Submitting Your Code
+## Prerequisite Environment Setup
+Prior to running this project locally, there are prerequisite steps that need to be completed prior to launching the application to set up the environment. Please reference the below wikis based on your operating system to set up your local environment.
 
-The preferred way to submit your code is to create a fork of this repository, push your changes to the forked reposistory, and then grant access to your forked repository to your interviewer. Your interviewer is listed in the email you received inviting you to this technical interview.
+- [Setup Steps - macOS](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS)
+- [Setup Steps - Windows](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-Windows)
 
-Alternatively, you may submit the code in the form of a zip file and email it to your interviewer. If you do this, please be sure to include a README in your submission with full details on how to set up and run your code.
+## Running the Application
+Below are steps for running the application on web. Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
 
-## Questions
+#### macOS
 
-If you have any questions, please reply to the invitation email you were sent for this technical interview.
+1. Open a new Terminal window.
+2. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
+3. Navigate to the parent directory of the cloned repository and run the following command:
+```
+./startApplication.sh
+```
+- This will launch the application in your default browser at `localhost:3000`.
+4. Use Ctrl + C in the Terminal window to exit the application.
 
-## Running The Code
+#### Windows
 
-[If you choose to clone this repo and work from the hello-world sample, please use the directions below. If you implement another solution using a different language or framework, please update these directions to reflect your code.]
+1. Open a new PowerShell window.
+2. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
+3. Navigate to the parent directory of the cloned repository and run the following command to run the backend service:
+```
+python3 src/api/route.py
+```
+4. Open a new PowerShell window.
+5. Navigate to the parent directory of the cloned repository and run the following command to run the frontend:
+```
+npm start
+```
+- This will launch the application in your default browser at `localhost:3000`.
+6. Use Ctrl + C in each PowerShell window to exit the application.
 
-### Installation
+### Testing
 
-1. pull down the repo.
-2. `npm install --no-save`
-3. `npm run db:create-db`
-4. `npm run dev`
+#### macOS
+1. Open a Terminal window and navigate to the parent directory of the cloned repository.
+2. **First time only:** Navigate to [src/api](src/api) and run this command (replacing `/absolute/path/to` with your relevant path) so the test file recognizes `route.py` as the primary backend app for backend unit tests:
+```
+export PYTHONPATH=/absolute/path/to/src/api
+```
+3. Backend and frontend tests can be run together by running the following command from the parent directory of the cloned repository in a Terminal window:
+```
+./runTests.sh
+```
+
+#### Windows
+1. Open a PowerShell window and navigate to the parent directory of the cloned repository.
+2. Run the backend tests by running the following command:
+```
+python -m pytest src/api/tests/test_route.py -v
+```
+3. Run the frontend tests by running the following command: 
+```
+npm test -- --watchAll=false
+```
+
+### Troubleshooting
+
+Error logs for any backend issues can be found in `src/api/backend-error.log` or `./backend-error.log`. For frontend issues, there are console logs that can be accessed by inspecting the page.
+
+## Future Considerations
+
+### Performance
+- Currently, MUI DataGrid is used for sorting and filtering on the frontend. While this works for a small static dataset, sorting and filtering should be moved to the backend to optimize performance.
+
+### Features
+- A metrics or reporting service could be built adjacent to this application to gather data around user visits and interactions (e.g., device accessed, CTA link clicks, etc.). This would help us make data-based decisions on effective methods of outreach and outcomes.
+- Mobile currently only displays 3 columns for efficiency and performance reasons. Another feature would be to add a toggle to the footer to force a Desktop view of the application in mobile.
+
+### Developer Experience / SDLC Considerations
+- Develop a standardized branching strategy in conjunction with a PR process to ensure quality and consistency.
+- Enforce branch protections.
+- Build a CI/CD pipeline for automated deployments (GitHub Actions preferred to keep it within the GitHub ecosystem).

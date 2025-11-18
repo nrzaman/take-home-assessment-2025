@@ -1,13 +1,13 @@
 {
   "name": "test-take-home",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "react-scripts start && python3 ./src/api/route.py",
+    "build": "react-scripts build",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "db:create-db": "node ./scripts/create-db.js",
     "db:drop-db": "node ./scripts/drop-db.js"
   },
@@ -16,18 +16,41 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.5",
+    "@mui/x-data-grid": "^8.18.0",
     "csv-parser": "^3.2.0",
-    "next": "^15.3.4",
     "pg": "^8.16.1",
     "pg-hstore": "^2.3.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
     "sequelize": "^6.37.7",
     "sequelize-typescript": "^2.1.6",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "web-vitals": "^3.5.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@types/react": "19.1.8",
-    "typescript": "5.8.3"
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "source-map-explorer": "^2.5.3"
   }
 }
