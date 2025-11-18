@@ -10,3 +10,5 @@ src/api/__pycache__/
 src/api/backend-error.log
 .env.production
 build/
+backend-error.log
+.venv

@@ -83,5 +83,5 @@ def test_read_config():
     assert "serverHost" in config
     assert config["serverHost"] == "127.0.0.1"
     assert "serverPort" in config
-    assert config["serverPort"] == 4000
+    assert config["serverPort"] == "4000"
     

@@ -1,5 +1,5 @@
 {
-    "user": "postgres",
+    "user": "voterAdmin",
     "password": "test",
     "host": "localhost",
     "port": 5432,

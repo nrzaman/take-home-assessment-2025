@@ -41,23 +41,29 @@ These steps are required to be able to run the application on your local machine
 
 #### Python
 1. Open a Terminal and navigate to the parent directory of where you cloned the repository.
-2. Install `python3` by using the command `brew install python`. You may also follow the steps documents at [this link](https://docs.python.org/3/using/mac.html). This should automatically install `pip` or `pip3`. Then, run the following commands:
-- Run `pip3 install flask` (Note: Try `pip install` if `pip3` doesn't work)
-- Run `pip3 install flask_cors` (Note: Try `pip install` if `pip3` doesn't work)
-- Run `pip3 install psycopg2` (Note: Try `pip install` if `pip3` doesn't work)
-- Run `pip3 install pytest` (Note: Try `pip install` if `pip3` doesn't work)
-3. Confirm python installation by typing `python --version`
+2. Install `python3` by using the command `brew install python`. You may also follow the steps documents at [this link](https://docs.python.org/3/using/mac.html).
+3. Confirm python installation by typing `python --version`.
 4. Once confirmed, a python virtual environment needs to be installed. Run `python3 -m venv .venv`.
-5. Then, activate the virtual environment by running `source .venv/bin/activate`
+5. Activate the virtual environment by running `source .venv/bin/activate`.
+6. Run `pip3 install -r requirements.txt`. This will install all required Python libraries to run and test the application.
+- Note: If installing `psycopg2` results in errors, try running `pip3 install psycopg2-binary` on its own.
+
 
 #### NPM
 1. Install `npm` by following the instructions linked [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 2. Run `npm install --no-save`
 
+#### Docker / Colima
+1. Install Docker by running `brew install docker`.
+2. Install Colima by running `brew install colima`.
+3. Run `colima start`.
+4. Confirm that Docker is running by typing `docker ps`.
+
 #### PostgreSQL
 1. Install [PostgreSQL](https://www.postgresql.org/download/macosx/) by using the command `brew install postgresql@vv` where `vv` is the version number you would like to install.
-2. Update `src/config/db_config.json` with the relevant database credentials if needed.
-3. Run `npm run db:create-db`
+2. (Optional) Update `src/config/db_config.json` with the relevant database credentials.
+3. In a new Terminal window, run `docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres` where `[PASSWORD]` is the password specified in `src/config/db_config.json` and `[USERNAME]` is the username specified in `src/config/db_config.json`.
+3. Run `npm run db:create-db`.
 
 ### Running
 
@@ -70,15 +76,13 @@ Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A ref
 ### Testing
 
 1. Open a Terminal window.
-2. Navigate to the parent directory of the cloned repository and into `src/api`
-3. Run `export PYTHONPATH=/path/to/src/api`
-4. Run `pytest`
+2. Navigate to the parent directory of the cloned repository and into `src/api`.
+3. Run `export PYTHONPATH=/path/to/src/api`. Otherwise, it will not recognize `route.py` as the primary backend app for the unit tests.
+4. Run `pytest` in `src/api`
 
-### Common Debugging Issues
+### Debugging
 
-If there is a data load issue, it's possible that it is blocked by a CORS policy. While there was code written to address this, `src/config/local_api.json` may need to be updated with a different port number.
-
-Error logs for any backend issues can be found in `src/api/backend-error.log`.
+Error logs for any backend issues can be found in `src/api/backend-error.log` or `./backend-error.log`. For frontend issues, there are console logs that can be accessed by inspecting the page.
 
 ## Future Considerations
 
