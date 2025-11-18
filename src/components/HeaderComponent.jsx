@@ -12,7 +12,7 @@ function HeaderComponent() {
         U.S. Voter Information
       </Typography>
       <Typography variant="subtitle1">
-        The table below includes a list of voter information by state. Column widths are adjustable to view the full contents in a given row. If you do adjust the column sizes, please use the horizontal scrollbar on the table to view all columns.<br></br><br></br>
+        The table below includes a list of voter information by state. Column widths are adjustable to view the full contents in a given row. If you do adjust the column sizes, please use the horizontal scrollbar (if needed) on the table to view all columns.<br></br><br></br>
       </Typography>
       {!isMobile && (
         <Typography variant="subtitle1">

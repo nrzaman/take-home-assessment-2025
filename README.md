@@ -76,7 +76,13 @@ These steps are required to be able to run the application on your local machine
 1. Open a Terminal window (or use an existing one you have open).
 2. Install [PostgreSQL](https://www.postgresql.org/download/macosx/) by using the command `brew install postgresql@vv` where `vv` is the version number you would like to install.
 3. (Optional) Update `src/config/db_config.json` with your custom database credentials (username and password).
-4. In a new Terminal window, run `docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres`, where `[PASSWORD]` is the password specified in `src/config/db_config.json` and `[USERNAME]` is the username specified in `src/config/db_config.json`.
+4. In a new Terminal window, run the following command: 
+```
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres
+
+// Replace `[PASSWORD]` with the password specified in `src/config/db_config.json`
+// Replace `[USERNAME]` is the username specified in `src/config/db_config.json`
+```
 5. Run `npm run db:create-db` in your original Terminal window.
 
 ### Running
@@ -114,6 +120,6 @@ Currently, this application is using MUI DataGrid for sorting and filtering on t
 ### Features
 An additional metrics or reporting service and UI could be built adjacent to this application to gather data around how many users visited the site, used the application to register to vote, or otherwise took action to register. This would help us make data-based decisions on effective outreach and outcomes.
 
-In conjunction with metrics, we would want to track clicks on the online registration links. The online registration links that are currently being pulled from `voter_registration_deadlines.csv` are broken, but when they are loaded in the table, they are all hyperlinked and accessible to users. For states that do not have online registration links currently listed, a link to current voter registration information would be beneficial so there is a quick action for users to take for their state.
+In conjunction with metrics, we would want to track clicks on the online registration links. For states that do not have online registration links currently listed, a link to current voter registration information would be beneficial so there is a quick action for users to take for their state.
 
 Mobile currently only displays 3 columns for efficiency and performance reasons. Another feature would be to add a toggle to the footer to force a Desktop view of the application in mobile.
