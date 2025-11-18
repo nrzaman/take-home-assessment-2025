@@ -153,9 +153,9 @@ Otherwise, tests can be run separately by following the below steps.
 ```
 cd src/api
 ```
-2. (First time only) Run this command (using your relevant path) so the test file recognizes `route.py` as the primary backend app for the unit test:
+2. (First time only) Run this command (replacing `/aboslute/path/to` with your relevant path) so the test file recognizes `route.py` as the primary backend app for the unit test:
 ```
-export PYTHONPATH=/path/to/src/api
+export PYTHONPATH=/absolute/path/to/src/api
 ```
 3. Run the following command in [src/api](src/api):
 ```
