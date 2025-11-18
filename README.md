@@ -2,9 +2,9 @@
 
 This is a simple application that displays voter registration information by state. A user can use this to view relevant voter registration information for all U.S. states (and District of Colombia).
 
-The frontend was developed in **React.js** using the **Material UI framework**, and the backend was developed in **Python** and **PostgreSQL**.
+The frontend was developed in **React.js** using the **Material UI framework**, and the backend was developed in **Python** using the **Flask framework** and **PostgreSQL**.
 
-<img width="1940" height="753" alt="image" src="https://github.com/user-attachments/assets/ea3c102d-fb5e-4c48-b7e6-2bba76c8dfa3" />
+<img width="1940" height="753" alt="Image is a screenshot of the application. There is a header in dark blue that states U.S. Voter Registration, some brief instruction subtitle text, and a table displaying 5 rows of state voter registration data." src="https://github.com/user-attachments/assets/ea3c102d-fb5e-4c48-b7e6-2bba76c8dfa3" />
 
 - [Engineering Requirements](#engineering-requirements)
 - [AI Output](#ai-output)
@@ -15,21 +15,13 @@ The frontend was developed in **React.js** using the **Material UI framework**, 
 
 ## Engineering Requirements
 
-Below are the in scope requirements that this application was built in accordance to.
-
-1. Parsing and storing `voter_registration_deadlines.csv` into a PostgreSQL database
-2. Developing an API endpoint that retrieves the voter information data
-3. Developing a UI that displays a list of all states and their voter information
-4. The ability to filter and sort the voter information table
-5. Developing a UI that is accessible
-6. Developing a UI that is both web and mobile friendly
-7. Writing unit tests to validate the API call(s)
-8. Relevant documentation (`README.md` or similar) that describes how to run the application
-
-Full UI/UX wireframes are out of scope for this iteration of the application.
+Please see the following document for the original instructions behind creating this application:
+- [SL/VF Technical Take Home Instructions](https://github.com/nrzaman/take-home-assessment-2025/wiki/SL-VF-Technical-Take-Home-Instructions)
 
 ### Assumptions
-1. Mobile users would most likely use this application for quick online registration information and a CTA. Therefore, only 3 columns are displayed for better performance on mobile: `State`, `Registration Deadline Online`, and `Register Link`.
+1. Full UI/UX wireframes are out of scope for this iteration of the application.
+2. Search and filtering is done on a per column basis.
+3. Mobile users would most likely use this application for quick online registration information and a CTA. Therefore, only 3 columns are displayed for better performance on mobile: `State`, `Registration Deadline Online`, and `Register Link`.
 
 ## AI Output
 
@@ -42,8 +34,8 @@ This folder includes test coverage and optimization reports, as well as a `.zip`
 ## Prerequisite Environment Setup
 Prior to running this project locally, there are prerequisite steps that need to be completed prior to launching the application to set up the environment. Please reference the below wikis based on your operating system to set up your local environment.
 
-- [Setup Steps - macOS](https://github.com/nrzaman/take-home-assessment-2025/wiki/1.-Setup-Steps-%E2%80%90-macOS)
-- [Setup Steps - Windows](https://github.com/nrzaman/take-home-assessment-2025/wiki/2.-Setup-Steps-%E2%80%90-Windows)
+- [Setup Steps - macOS](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS)
+- [Setup Steps - Windows](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-Windows)
 
 ## Running the Application
 Below are steps for running the application on web. Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
