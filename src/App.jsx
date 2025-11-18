@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy } from 'react';
 
 // Lazy load components for code-splitting
 const HeaderComponent = lazy(() => import('./components/HeaderComponent'));
@@ -30,20 +30,6 @@ const customTheme = createTheme({
 });
 
 function App() {
-  // Enable back/forward cache by avoiding unload handlers
-  useEffect(() => {
-    // Prevent any unload handlers that would disable bfcache
-    const handleBeforeUnload = () => {
-      // Don't prevent default - let the browser handle it
-      // This allows bfcache to work
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
-
   return (
     <main>
       <ThemeProvider theme={customTheme}>

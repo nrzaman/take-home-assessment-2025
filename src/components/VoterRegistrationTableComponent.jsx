@@ -14,7 +14,8 @@ const desktopColumns = [
   { field: 'deadlineByMail', headerName: 'Registration Deadline By Mail', width: 200, flex: 1 },
   { field: 'deadlineOnline', headerName: 'Registration Deadline Online', width: 200, flex: 1 },
   { field: 'electionDayRegistration', headerName: 'Election Day Registration', width: 200, flex: 1 },
-  { field: 'onlineRegistrationLink', headerName: 'Online Registration Link', width: 500, flex: 1.5 },
+  { field: 'onlineRegistrationLink', headerName: 'Online Registration Link', width: 500, flex: 1.5, renderCell: (params) => 
+      <a href="${params.row.onlineRegistrationLink}">{params.row.onlineRegistrationLink}</a> },
   { field: 'description', headerName: 'Description', width: 400, flex: 1 },
 ];
 
@@ -22,7 +23,8 @@ const desktopColumns = [
 const mobileColumns = [
   { field: 'state', headerName: 'State', width: 100, flex: 0.8 },
   { field: 'deadlineOnline', headerName: 'Registration Deadline Online', width: 200, flex: 1 },
-  { field: 'onlineRegistrationLink', headerName: 'Register', width: 130, flex: 1 },
+  { field: 'onlineRegistrationLink', headerName: 'Register', width: 130, flex: 1, renderCell: (params) => 
+      <a href="${params.row.onlineRegistrationLink}">{params.row.onlineRegistrationLink}</a> },
 ];
 
 const paginationModel = { page: 0, pageSize: 5 };
@@ -47,14 +49,31 @@ function VoterRegistrationTableComponent() {
     const columns = useMemo(() => isMobile ? mobileColumns : desktopColumns, [isMobile]);
 
     useEffect(() => {
+        let isMounted = true;
+
         fetch(LOCAL_API)
-        .then((data) => data.json())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then((data) => {
-            setTableData(data);
+            if (isMounted) {
+                setTableData(data);
+            }
         })
         .catch((error) => {
-            console.error('Error fetching data:', error);
-        })
+            if (isMounted) {
+                console.error('Error fetching data:', error);
+                setTableData([]);
+            }
+        });
+
+        // Cleanup: prevent state update on unmounted component
+        return () => {
+            isMounted = false;
+        };
     }, [])
 
   return (

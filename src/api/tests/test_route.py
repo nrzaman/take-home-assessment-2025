@@ -3,6 +3,8 @@ import sys
 import route
 from route import app
 from pathlib import Path
+import os
+import logging
 
 # Add the parent directory to sys.path to import route module
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -60,6 +62,8 @@ states = ["Alabama",
           "Wisconsin", 
           "Wyoming"]
 
+logger = logging.getLogger(__name__)
+
 # Create a test client fixture
 @pytest.fixture
 def client():
@@ -78,10 +82,26 @@ def test_get_data(client):
         assert s.encode() in response.data  
 
 # Tests helper function such that it retrieves expected config values from config file
-def test_read_config():
+def test_read_config_success():
     config = route.read_config('../config/local_api.json')
     assert "serverHost" in config
     assert config["serverHost"] == "127.0.0.1"
     assert "serverPort" in config
     assert config["serverPort"] == "4000"
+
+# Tests helper function errors out with a nonexistent file
+def test_read_config_failure_nonexistent(caplog):
+    caplog.set_level(logging.ERROR)
+
+    route.read_config('this_file_does_not_exist.json')
+    # Assert that the log text exists
+    assert f"Error: The file 'this_file_does_not_exist.json' was not found." in caplog.text
+
+# Tests helper function errors out with an incorrectly formatted file
+def test_read_config_failure_incorrect_format(caplog):
+    caplog.set_level(logging.ERROR)
+
+    route.read_config('./tests/incorrect_format.json')
+    # Assert that the log text exists
+    assert f"Error: Invalid JSON format in './tests/incorrect_format.json'" in caplog.text
     

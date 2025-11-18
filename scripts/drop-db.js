@@ -1,7 +1,7 @@
 const { Client } = require("pg");
 const dbConfig = require("../src/config/db_config.json");
 
-// Update these values with your PostgreSQL credentials
+// These values are dynamically updated from db_config.json
 const user = dbConfig.user;
 const password = dbConfig.password;
 const host = dbConfig.host;

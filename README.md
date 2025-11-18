@@ -8,7 +8,7 @@
 
 ## Developer Requirements
 
-Below are the in scope requirements and assumptions that this application was built in accordance to.
+Below are the in scope requirements that this application was built in accordance to.
 
 1. Parsing and storing `voter_registration_deadlines.csv` into a PostgreSQL database
 2. Developing an API endpoint that retrieves the voter information data
@@ -17,9 +17,12 @@ Below are the in scope requirements and assumptions that this application was bu
 5. Developing a UI that is accessible
 6. Developing a UI that is both web and mobile friendly
 7. Writing unit tests to validate the API call(s)
-8. Relevant documentation (README or similar) that describes how to run the application
+8. Relevant documentation (`README.md` or similar) that describes how to run the application
 
 Full UI/UX wireframes are out of scope for this application.
+
+### Assumptions
+1. On mobile, only 3 columns are displayed for better performance: `State`, `Registration Deadline Online`, and `Register`. This is operating under the assumption that a mobile user would most likely be looking for a way to register online via mobile, as opposed to other methods.
 
 ## Running the Application
 
@@ -33,17 +36,17 @@ These steps are required to be able to run the application on your local machine
 
 #### GitHub
 1. Generate an `ssh-key` for GitHub if you have not done so already by following the steps outlined in [this linked document](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
-2. Open a Terminal window and clone this repository (SSH recommended in order to use the `ssh-key`, using `git clone`).
+2. Open a Terminal window, navigate to your GitHub workspace directory (if applicable), and clone this repository (SSH recommended in order to use the `ssh-key`, using `git clone`).
 
 #### Installers
 
 1. Install [Homebrew](https://brew.sh/). This will allow you to use the command `brew install` in the Terminal to be able to install most libraries.
 
 #### Python
-1. Open a Terminal and navigate to the parent directory of where you cloned the repository.
+1. Open a Terminal and navigate to the parent directory of where you cloned the repository (most likely named `take-home-assessment-2025`).
 2. Install `python3` by using the command `brew install python`. You may also follow the steps documents at [this link](https://docs.python.org/3/using/mac.html).
-3. Confirm python installation by typing `python --version`.
-4. Once confirmed, a python virtual environment needs to be installed. Run `python3 -m venv .venv`.
+3. Confirm Python installation by typing `python --version`.
+4. Once confirmed, a Python virtual environment needs to be installed. Run `python3 -m venv .venv`.
 5. Activate the virtual environment by running `source .venv/bin/activate`.
 6. Run `pip3 install -r requirements.txt`. This will install all required Python libraries to run and test the application.
 - Note: If installing `psycopg2` results in errors, try running `pip3 install psycopg2-binary` on its own.
@@ -61,24 +64,23 @@ These steps are required to be able to run the application on your local machine
 
 #### PostgreSQL
 1. Install [PostgreSQL](https://www.postgresql.org/download/macosx/) by using the command `brew install postgresql@vv` where `vv` is the version number you would like to install.
-2. (Optional) Update `src/config/db_config.json` with the relevant database credentials.
-3. In a new Terminal window, run `docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres` where `[PASSWORD]` is the password specified in `src/config/db_config.json` and `[USERNAME]` is the username specified in `src/config/db_config.json`.
-3. Run `npm run db:create-db`.
+2. (Optional) Update `src/config/db_config.json` with your custom database credentials (username and password).
+3. In a new Terminal window, run `docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres`, where `[PASSWORD]` is the password specified in `src/config/db_config.json` and `[USERNAME]` is the username specified in `src/config/db_config.json`.
+3. Run `npm run db:create-db` in your original Terminal window.
 
 ### Running
 
 1. (Optional) Update `src/config/local_api.json` with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
-2. Navigate to the parent directory of the cloned repository and run `startApplication.sh`. This should trigger the web browser opening to `localhost:3000` with the application.
-3. If needed, Ctrl + C to exit the application.
+2. Navigate to the parent directory of the cloned repository and run `./startApplication.sh`. This should trigger the web browser opening to `localhost:3000` with the application.
+3. If needed, Ctrl + C in the Terminal window to exit the application.
 
 Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
 
 ### Testing
 
-1. Open a Terminal window.
-2. Navigate to the parent directory of the cloned repository and into `src/api`.
-3. Run `export PYTHONPATH=/path/to/src/api`. Otherwise, it will not recognize `route.py` as the primary backend app for the unit tests.
-4. Run `pytest` in `src/api`
+1. Open a Terminal window and navigate to the parent directory of the cloned repository and into `src/api`.
+2. Run `export PYTHONPATH=/path/to/src/api`. Otherwise, the test file will not recognize `route.py` as the primary backend app for the unit tests.
+3. Run `pytest` in `src/api`
 
 ### Debugging
 
@@ -87,3 +89,10 @@ Error logs for any backend issues can be found in `src/api/backend-error.log` or
 ## Future Considerations
 
 Currently, this application is using MUI DataGrid for sorting and filtering on the frontend. While this works for a small dataset, one consideration would be to do the sorting and filtering on the backend to increase performance.
+
+### Features
+An additional metrics or reporting service and UI could be built adjacent to this application to gather data around how many users visited the site, used the application to register to vote, or otherwise took action to register. This would help us make data-based decisions on effective outreach and outcomes.
+
+In conjunction with metrics, we would want to track clicks on the online registration links. The online registration links that are currently being pulled from `voter_registration_deadlines.csv` are broken, but when they are loaded in the table, they are all hyperlinked and accessible to users. For states that do not have online registration links currently listed, a link to current voter registration information would be beneficial so there is a quick action for users to take for their state.
+
+Mobile currently only displays 3 columns for efficiency and performance reasons. Another feature would be to add a toggle to the footer to force a Desktop view of the application in mobile.

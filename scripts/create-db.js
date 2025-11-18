@@ -4,7 +4,7 @@ const csv = require("csv-parser");
 const dbConfig = require("../src/config/db_config.json");
 const { Sequelize, DataTypes } = require("sequelize");
 
-// Update these values with your PostgreSQL credentials
+// These values are dynamically updated from db_config.json
 const user = dbConfig.user;
 const password = dbConfig.password;
 const host = dbConfig.host;
