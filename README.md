@@ -29,10 +29,11 @@ Full UI/UX wireframes are out of scope for this application.
 
 ## AI Output
 
-AI Output can be found in these files:
-- [OPTIMIZATION_SUMMARY.md](OPTIMIZATION_SUMMARY.md)
-- [TEST_COVERAGE.md](TEST_COVERAGE.md)
-- [zaman-claude-output.zip](zaman-claude-output.zip)
+AI Output can be found in this folder:
+
+- [/ai_reports](/ai_reports)
+
+This folder includes test coverage and optimization reports, as well as a `.zip` file containing the Claude logs used on this project.
 
 ## Running the Application
 
@@ -112,7 +113,7 @@ docker ps
 brew install postgresql@vv
 ```
 - Replace `vv` with the version number you would like to install.
-3. (Optional) Update `src/config/db_config.json` with your custom database credentials (username and password).
+3. (Optional) Update [src/config/db_config.json](src/config/db_config.json) with your custom database credentials (username and password).
 4. In a new Terminal window, run the following command to create your credentials for the database: 
 ```
 docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres
@@ -127,7 +128,7 @@ npm run db:create-db
 ### Running
 
 1. Open a Terminal window (or use an existing one you have open).
-2. (Optional) Update `src/config/local_api.json` with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
+2. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
 3. Navigate to the parent directory of the cloned repository and run the following command:
 ```
 ./startApplication.sh
@@ -148,12 +149,15 @@ If you choose to do this, please first follow Step 2 of under the Backend sectio
 Otherwise, tests can be run separately by following the below steps.
 
 #### Backend
-1. Open a Terminal window and navigate to the parent directory of the cloned repository and into `src/api`.
+1. Open a Terminal window and navigate to the parent directory of the cloned repository and into [src/api](src/api).
 2. (First time only) Run this command (using your relevant path) so the test file recognizes `route.py` as the primary backend app for the unit test:
 ```
 export PYTHONPATH=/path/to/src/api
 ```
-3. Run `pytest` in `src/api`
+3. Run the following command in [src/api](src/api):
+```
+pytest
+```
 
 #### Frontend
 1. Open a Terminal window and navigate to the parent directory of the cloned repository.

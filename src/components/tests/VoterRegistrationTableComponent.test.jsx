@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { useMediaQuery } from '@mui/material';
 import '@testing-library/jest-dom';
-import VoterRegistrationTableComponent from './VoterRegistrationTableComponent';
+import VoterRegistrationTableComponent from '../VoterRegistrationTableComponent';
 
 // Mock useMediaQuery from Material-UI
 jest.mock('@mui/material', () => {
@@ -13,7 +13,7 @@ jest.mock('@mui/material', () => {
 });
 
 // Mock configData to avoid loading JSON config
-jest.mock('../config/local_api.json', () => ({
+jest.mock('../../config/local_api.json', () => ({
   serverHost: '127.0.0.1',
   serverPort: '4000',
 }));

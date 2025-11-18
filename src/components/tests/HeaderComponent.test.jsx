@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { useMediaQuery } from '@mui/material';
 import '@testing-library/jest-dom';
-import HeaderComponent from './HeaderComponent';
+import HeaderComponent from '../HeaderComponent';
 
 // Mock useMediaQuery from Material-UI
 jest.mock('@mui/material', () => {
@@ -20,7 +20,6 @@ describe('HeaderComponent', () => {
 
   test('renders the main title', () => {
     useMediaQuery.mockReturnValue(false); // Desktop view
-
     render(<HeaderComponent />);
     const title = screen.getByText('U.S. Voter Information');
     expect(title).toBeInTheDocument();

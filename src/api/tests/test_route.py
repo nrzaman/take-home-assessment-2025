@@ -84,7 +84,6 @@ def test_read_config_failure_nonexistent(caplog):
 
 # Tests helper function errors out with an incorrectly formatted file
 def test_read_config_failure_incorrect_format(caplog):
-    """Test that invalid JSON format is caught"""
     caplog.set_level(logging.ERROR)
 
     # Create a temp file with invalid JSON
@@ -191,7 +190,7 @@ def test_get_data_response_structure(client):
     mock_connection, mock_db_config = get_mock_db_setup(mock_data)
 
     with patch('route.connect_to_db', return_value=mock_connection), \
-         patch.dict(route.__dict__, {'db_config': mock_db_config}):
+        patch.dict(route.__dict__, {'db_config': mock_db_config}):
         response = client.get("/data")
         data = response.get_json()
 
@@ -215,7 +214,6 @@ def test_get_data_response_structure(client):
 
 # Tests error when connecting to nonexistent database (integration test)
 def test_connect_to_db_with_invalid_config(monkeypatch, caplog):
-    """Test that database connection errors are logged properly"""
     caplog.set_level(logging.ERROR)
 
     # Mock the db_config to use invalid database credentials
