@@ -19,14 +19,14 @@ describe('HeaderComponent', () => {
   });
 
   test('renders the main title', () => {
-    useMediaQuery.mockReturnValue(false); // Desktop view
+    useMediaQuery.mockReturnValue(false); // Indicates Desktop view
     render(<HeaderComponent />);
     const title = screen.getByText('U.S. Voter Information');
     expect(title).toBeInTheDocument();
   });
 
   test('renders general instructions', () => {
-    useMediaQuery.mockReturnValue(false); // Desktop view
+    useMediaQuery.mockReturnValue(false); // Indicates Desktop view
 
     render(<HeaderComponent />);
     const generalInstructions = screen.getByText(/The table below includes a list of voter information by state/);
@@ -34,7 +34,7 @@ describe('HeaderComponent', () => {
   });
 
   test('renders desktop-specific instructions when not on mobile', () => {
-    useMediaQuery.mockReturnValue(false); // Desktop view
+    useMediaQuery.mockReturnValue(false); // Indicates Desktop view
 
     render(<HeaderComponent />);
     const desktopInstructions = screen.getByText(/please use the search filters by hovering over the "State" column/);
@@ -42,7 +42,7 @@ describe('HeaderComponent', () => {
   });
 
   test('does not render mobile-specific instructions when on desktop', () => {
-    useMediaQuery.mockReturnValue(false); // Desktop view
+    useMediaQuery.mockReturnValue(false); // Indicates Desktop view
 
     render(<HeaderComponent />);
     const mobileInstructions = screen.queryByText(/please use the search filters by clicking the 3-dot menu/);
@@ -50,7 +50,7 @@ describe('HeaderComponent', () => {
   });
 
   test('renders mobile-specific instructions when on mobile', () => {
-    useMediaQuery.mockReturnValue(true); // Mobile view
+    useMediaQuery.mockReturnValue(true); // Indicates Mobile view
 
     render(<HeaderComponent />);
     const mobileInstructions = screen.getByText(/please use the search filters by clicking the 3-dot menu/);
@@ -58,7 +58,7 @@ describe('HeaderComponent', () => {
   });
 
   test('does not render desktop-specific instructions when on mobile', () => {
-    useMediaQuery.mockReturnValue(true); // Mobile view
+    useMediaQuery.mockReturnValue(true); // Indicates Mobile view
 
     render(<HeaderComponent />);
     const desktopInstructions = screen.queryByText(/please use the search filters by hovering over the "State" column/);
@@ -66,7 +66,7 @@ describe('HeaderComponent', () => {
   });
 
   test('renders closing message', () => {
-    useMediaQuery.mockReturnValue(false); // Desktop view
+    useMediaQuery.mockReturnValue(false); // Indicates Desktop view
 
     render(<HeaderComponent />);
     const closingMessage = screen.getByText('Happy voting!');
@@ -74,7 +74,7 @@ describe('HeaderComponent', () => {
   });
 
   test('renders column width adjustment instructions', () => {
-    useMediaQuery.mockReturnValue(false); // Desktop view
+    useMediaQuery.mockReturnValue(false); // Indicates Desktop view
 
     render(<HeaderComponent />);
     const widthInstructions = screen.getByText(/Column widths are adjustable to view the full contents/);

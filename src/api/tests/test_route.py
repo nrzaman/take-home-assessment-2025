@@ -2,6 +2,7 @@ import pytest
 import sys
 from pathlib import Path
 import logging
+from http import HTTPStatus
 from unittest.mock import Mock, patch, MagicMock
 
 # Add the parent directory to sys.path to import route module
@@ -45,13 +46,14 @@ def test_get_data(client):
     mock_db_config = {"tableName": "voter_registration"}
 
     with patch('route.connect_to_db', return_value=mock_connection), \
-         patch.dict(route.__dict__, {'db_config': mock_db_config}):
+        patch.dict(route.__dict__, {'db_config': mock_db_config}):
         response = client.get("/data")
         # Check for a successful response
-        assert response.status_code == 200
+        assert response.status_code == HTTPStatus.OK
         # Verify response is JSON
         data = response.get_json()
-        assert len(data) == 2
+        # Assert that the actual data retrieved matches the expected mock data
+        assert len(data) == len(mock_data)
         assert data[0]['state'] == "Alabama"
         assert data[1]['state'] == "Alaska"  
 
@@ -59,7 +61,7 @@ def test_get_data(client):
 def test_get_data_error(client):
     response = client.get("/")
     # Check for an error response
-    assert response.status_code == 404  
+    assert response.status_code == HTTPStatus.NOT_FOUND  
 
 # Tests helper function such that it retrieves expected config values from config file
 def test_read_config_success():
@@ -105,7 +107,7 @@ def test_get_data_content_type(client):
     mock_connection, mock_db_config = get_mock_db_setup(mock_data)
 
     with patch('route.connect_to_db', return_value=mock_connection), \
-         patch.dict(route.__dict__, {'db_config': mock_db_config}):
+        patch.dict(route.__dict__, {'db_config': mock_db_config}):
         response = client.get("/data")
         assert response.content_type == "application/json"
 
@@ -114,7 +116,7 @@ def test_get_data_cache_headers(client):
     mock_connection, mock_db_config = get_mock_db_setup(mock_data)
 
     with patch('route.connect_to_db', return_value=mock_connection), \
-         patch.dict(route.__dict__, {'db_config': mock_db_config}):
+        patch.dict(route.__dict__, {'db_config': mock_db_config}):
         response = client.get("/data")
         # Cache headers should be set for 1 hour (3600 seconds)
         assert "Cache-Control" in response.headers
@@ -126,9 +128,9 @@ def test_get_data_compression(client):
     mock_connection, mock_db_config = get_mock_db_setup(mock_data)
 
     with patch('route.connect_to_db', return_value=mock_connection), \
-         patch.dict(route.__dict__, {'db_config': mock_db_config}):
+        patch.dict(route.__dict__, {'db_config': mock_db_config}):
         response = client.get("/data")
-        assert response.status_code == 200
+        assert response.status_code == HTTPStatus.OK
         # Verify response is valid JSON
         data = response.get_json()
         assert isinstance(data, list)
@@ -139,7 +141,7 @@ def test_get_data_field_order(client):
     mock_connection, mock_db_config = get_mock_db_setup(mock_data)
 
     with patch('route.connect_to_db', return_value=mock_connection), \
-         patch.dict(route.__dict__, {'db_config': mock_db_config}):
+        patch.dict(route.__dict__, {'db_config': mock_db_config}):
         response = client.get("/data")
         data = response.get_json()
 
@@ -160,7 +162,8 @@ def test_get_data_field_order(client):
 # Tests that data contains expected number of records
 def test_get_data_count(client):
     # Create mock data for all 51 states
-    mock_local_data = [(f"State{i}", "2024-10-21", "2024-10-21", "2024-10-01", "No", "https://example.com", "Description") for i in range(51)]
+    expected_len = 51
+    mock_local_data = [(f"State{i}", "2024-10-21", "2024-10-21", "2024-10-01", "No", "https://example.com", "Description") for i in range(expected_len)]
     mock_connection, mock_db_config = get_mock_db_setup(mock_local_data)
 
     with patch('route.connect_to_db', return_value=mock_connection), \
@@ -168,7 +171,7 @@ def test_get_data_count(client):
         response = client.get("/data")
         data = response.get_json()
         # Should have 51 records
-        assert len(data) == 51, f"Expected 51 records, got {len(data)}"
+        assert len(data) == expected_len, f"Expected {expected_len} records, got {len(data)}"
 
 # Tests that each record has required non-null state field
 def test_get_data_state_field_present(client):
