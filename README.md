@@ -27,9 +27,9 @@ Full UI/UX wireframes are out of scope for this application.
 ## AI Output
 
 AI Output can be found in these files:
-- OPTIMIZATION_SUMMARY.md
-- TEST_COVERAGE.md
-- zaman-claude-output.zip
+- [a relative link](OPTIMIZATION_SUMMARY.md)
+- [a relative link](TEST_COVERAGE.md)
+- [a relative link](zaman-claude-output.zip)
 
 ## Running the Application
 
