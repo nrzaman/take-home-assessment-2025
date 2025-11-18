@@ -66,7 +66,7 @@ python3 src/api/route.py
 ```
 npm start
 ```
-- This will launch the application in your default browser at `localhost:3000`.
+- This will launch the application in your default browser at [http://localhost:3000](http://localhost:3000).
 6. Use Ctrl + C in each PowerShell window to exit the application.
 
 ### Testing
