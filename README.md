@@ -52,62 +52,112 @@ These steps are required to be able to run the application on your local machine
 
 #### Python
 1. Open a Terminal and navigate to the parent directory of where you cloned the repository (most likely named `take-home-assessment-2025`).
-2. Install `python3` by using the command `brew install python`. You may also follow the steps documents at [this link](https://docs.python.org/3/using/mac.html).
-3. Confirm Python installation by typing `python --version`.
-4. Once confirmed, a Python virtual environment needs to be installed. Run `python3 -m venv .venv`.
-5. Activate the virtual environment by running `source .venv/bin/activate`.
-6. Run `pip3 install -r requirements.txt`. This will install all required Python libraries to run and test the application.
+2. Install `python3` by running the command:
+```
+brew install python
+```
+- You may also follow the steps documents at [this link](https://docs.python.org/3/using/mac.html).
+3. Confirm Python installation by running:
+```
+python --version
+```
+4. Once confirmed, a Python virtual environment needs to be installed. Run the following command:
+```
+python3 -m venv .venv
+```
+5. Activate the virtual environment by running:
+```
+source .venv/bin/activate
+```
+6. Run the following command to install all required Python libraries: 
+```
+pip3 install -r requirements.txt
+```
 - Note: If installing `psycopg2` results in errors, try running `pip3 install psycopg2-binary` on its own.
 
 
 #### NPM
 1. Install `npm` by following the instructions linked [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 2. In a Terminal window, navigate to the parent directory of where you cloned the repository (most likely named `take-home-assessment-2025`).
-2. Run `npm install --no-save`
+2. Run the following command:
+```
+npm install --no-save
+```
 
 #### Docker / Colima
 1. Open a Terminal window (or use an existing one you have open).
-2. Install Docker by running `brew install docker`.
-3. Install Colima by running `brew install colima`.
-4. Run `colima start`.
-5. Confirm that Docker is running by typing `docker ps`.
+2. Install Docker by running:
+```
+brew install docker
+```
+3. Install Colima by running:
+```
+brew install colima
+```
+4. Run the following command to start docker:
+```
+colima start
+```
+5. Confirm that Docker is running by running the following command:
+```
+docker ps
+```
 
 #### PostgreSQL
 1. Open a Terminal window (or use an existing one you have open).
-2. Install [PostgreSQL](https://www.postgresql.org/download/macosx/) by using the command `brew install postgresql@vv` where `vv` is the version number you would like to install.
+2. Install [PostgreSQL](https://www.postgresql.org/download/macosx/) by running the following command:
+```
+brew install postgresql@vv
+```
+- Replace `vv` with the version number you would like to install.
 3. (Optional) Update `src/config/db_config.json` with your custom database credentials (username and password).
 4. In a new Terminal window, run the following command: 
 ```
 docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres
-
-// Replace `[PASSWORD]` with the password specified in `src/config/db_config.json`
-// Replace `[USERNAME]` is the username specified in `src/config/db_config.json`
 ```
-5. Run `npm run db:create-db` in your original Terminal window.
+- Replace `[PASSWORD]` with the password specified in `src/config/db_config.json`
+- Replace `[USERNAME]` is the username specified in `src/config/db_config.json`
+5. Run the following command in your original Terminal window:
+```
+npm run db:create-db
+```
 
 ### Running
 
 1. Open a Terminal window (or use an existing one you have open).
 2. (Optional) Update `src/config/local_api.json` with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
-3. Navigate to the parent directory of the cloned repository and run `./startApplication.sh`. This should trigger the web browser opening to `localhost:3000` with the application.
+3. Navigate to the parent directory of the cloned repository and run the following command:
+```
+./startApplication.sh
+```
 4. If needed, Ctrl + C in the Terminal window to exit the application.
 
 Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
 
 ### Testing
 
-Both backend and frontend tests can be run together by running `./runTests.sh` from the parent directory of the cloned repository. If you choose to do this, please first follow Step 2 of under the Backend section below.
+Both backend and frontend tests can be run together by running the following command from the parent directory of the cloned repository:
+```
+./runTests.sh
+```
+If you choose to do this, please first follow Step 2 of under the Backend section below.
 
 Otherwise, tests can be run separately by following the below steps.
 
 #### Backend
 1. Open a Terminal window and navigate to the parent directory of the cloned repository and into `src/api`.
-2. (First time only) Run `export PYTHONPATH=/path/to/src/api`. Otherwise, the test file will not recognize `route.py` as the primary backend app for the unit tests.
+2. (First time only) Run this command (using your relevant path) so the test file recognizes `route.py` as the primary backend app for the unit test:
+```
+export PYTHONPATH=/path/to/src/api
+```
 3. Run `pytest` in `src/api`
 
 #### Frontend
 1. Open a Terminal window and navigate to the parent directory of the cloned repository.
-2. Run `npm test`
+2. Run the following command: 
+```
+npm test
+```
 
 ### Debugging
 
