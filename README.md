@@ -22,10 +22,10 @@ Below are the in scope requirements that this application was built in accordanc
 7. Writing unit tests to validate the API call(s)
 8. Relevant documentation (`README.md` or similar) that describes how to run the application
 
-Full UI/UX wireframes are out of scope for this application.
+Full UI/UX wireframes are out of scope for this iteration of the application.
 
 ### Assumptions
-1. On mobile, only 3 columns are displayed for better performance: `State`, `Registration Deadline Online`, and `Register`. This is operating under the assumption that a mobile user would most likely be looking for a way to register online via mobile, as opposed to other methods.
+1. Mobile users would most likely use this application for quick online registration information and a CTA. Therefore, only 3 columns are displayed for better performance on mobile: `State`, `Registration Deadline Online`, and `Register Link`.
 
 ## AI Output
 
@@ -175,11 +175,14 @@ Error logs for any backend issues can be found in `src/api/backend-error.log` or
 
 ## Future Considerations
 
-Currently, this application is using MUI DataGrid for sorting and filtering on the frontend. While this works for a small dataset, one consideration would be to do the sorting and filtering on the backend to increase performance.
+### Performance
+- Currently, MUI DataGrid is used for sorting and filtering on the frontend. While this works for a small static dataset, sorting and filtering should be moved to the backend to optimize performance.
 
 ### Features
-An additional metrics or reporting service and UI could be built adjacent to this application to gather data around how many users visited the site, used the application to register to vote, or otherwise took action to register. This would help us make data-based decisions on effective outreach and outcomes.
+- A metrics or reporting service and UI could be built adjacent to this application to gather data around user visits and interactions (e.g., device accessed, CTA link clicks, etc.). This would help us make data-based decisions on effective methods of outreach and outcomes.
+- Mobile currently only displays 3 columns for efficiency and performance reasons. Another feature would be to add a toggle to the footer to force a Desktop view of the application in mobile.
 
-In conjunction with metrics, we would want to track clicks on the online registration links. For states that do not have online registration links currently listed, a link to current voter registration information would be beneficial so there is a quick action for users to take for their state.
-
-Mobile currently only displays 3 columns for efficiency and performance reasons. Another feature would be to add a toggle to the footer to force a Desktop view of the application in mobile.
+### Developer Experience / SDLC Considerations
+- Develop a standardized branching strategy in conjunction with a PR process to ensure quality and consistency.
+- Enforce branch protections.
+- Build a CI/CD pipeline for automated deployments (GitHub Actions preferred to keep it within the GitHub ecosystem).
