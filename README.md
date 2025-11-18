@@ -2,14 +2,18 @@
 
 This is a simple application that displays voter registration information by state. A user can use this to view relevant voter registration information for all U.S. states (and District of Colombia).
 
+The frontend was developed in **React.js** using the **Material UI framework**, and the backend was developed in **Python** and **PostgreSQL**.
+
 <img width="1940" height="753" alt="image" src="https://github.com/user-attachments/assets/ea3c102d-fb5e-4c48-b7e6-2bba76c8dfa3" />
 
-- [Developer requirements](#requirements)
-- [AI output](#ai-output)
-- [Running the application](#running-the-application)
+- [Engineering Requirements](#engineering-requirements)
+- [AI Output](#ai-output)
+- [Prerequisite Environment Setup](#prerequisite-environment-setup)
+- [Running the Application](#running-the-application)
+- [Testing](#testing)
 - [Future considerations](#future-considerations)
 
-## Developer Requirements
+## Engineering Requirements
 
 Below are the in scope requirements that this application was built in accordance to.
 
@@ -35,123 +39,18 @@ AI Output can be found in this folder:
 
 This folder includes test coverage and optimization reports, as well as a `.zip` file containing the Claude logs used on this project.
 
+## Prerequisite Environment Setup
+Prior to running this project locally, there are prerequisite steps that need to be completed prior to launching the application to set up the environment. Please reference the below wikis based on your operating system to set up your local environment.
+
+- [Setup Steps - macOS](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS)
+- [Setup Steps - Windows](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS)
+
 ## Running the Application
-
-This application can currently be run locally. The frontend was developed in **React.js** using the **Material UI framework**, and the backend was developed in **Python** and **PostgreSQL**.
-
-Please follow the below steps to run the application.
-
-### Prerequisites
-
-These steps are required to be able to run the application on your local machine. Unless otherwise specified, the steps are applicable to both macOS and Windows operating systems.
-
-#### GitHub
-1. Generate an `ssh-key` for GitHub if you have not done so already by following the steps outlined in [this linked document](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
-2. Open a Terminal (macOS) or PowerShell (Windows) window, navigate to your GitHub workspace directory (if applicable), and clone this repository (SSH recommended in order to use the `ssh-key`):
-```
-git clone git@github.com:nrzaman/take-home-assessment-2025.git
-```
-
-#### Installers
-
-1. **For macOS:** Install [Homebrew](https://brew.sh/). This will allow you to use the command `brew install` in the Terminal to be able to install most libraries.
-2. **For Windows:** No special installer is needed here.
-
-#### Python
-1. Open Terminal (macOS) or PowerShell (Windows) and navigate to the parent directory of where you cloned the repository (most likely named `take-home-assessment-2025`).
-2. Install `python3`:
-- **For macOS:** Follow the steps documented at [this link](https://docs.python.org/3/using/mac.html) OR use the following command in Terminal:
-```
-brew install python
-```
-- **For Windows:** Follow the steps documented at [this link](https://www.python.org/downloads/windows/) for the latest **Python** version. Please ensure `Add Python to PATH` is selected.
-3. Confirm **Python** installation by running the following in Terminal (macOS) or PowerShell (Windows):
-```
-python --version
-```
-4. Once confirmed, a **Python virtual environment** needs to be installed. Run the following command in Terminal (macOS) or PowerShell (Windows) to do so:
-```
-python3 -m venv .venv
-```
-5. Activate the virtual environment:
-- **For macOS:** Use the following command in Terminal:
-```
-source .venv/bin/activate
-```
-- **For Windows:** use the following command in PowerShell:
-```
-.venv\Scripts\activate
-```
-6. Run the following command to install all required **Python** libraries: 
-```
-pip3 install -r requirements.txt
-```
-- Note: If installing `psycopg2` results in errors, try running `pip3 install psycopg2-binary` on its own.
-
-
-#### NPM
-1. Install `npm` by following the instructions linked [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm), which includes instructions for both macOS and Windows.
-2. In a Terminal (macOS) or PowerShell (Windows) window, verify the installation by running the command:
-```
-npm --version
-```
-3. In the same window, navigate to the parent directory of where you cloned the repository (most likely named `take-home-assessment-2025`).
-4. Run the following command to install dependencies:
-```
-npm install --no-save
-```
-
-#### Docker
-##### macOS
-1. Open a Terminal window (or use an existing one you have open).
-2. Install **Docker** by running:
-```
-brew install docker
-```
-3. Install **Colima** by running:
-```
-brew install colima
-```
-4. Run the following command to start **Docker**:
-```
-colima start
-```
-
-##### Windows
-1. Install **Docker** by following the instructions [linked here](https://docs.docker.com/desktop/setup/install/windows-install/).
-2. Enable `WSL 2` during the installation process.
-
-##### Both operating systems
-1. Confirm that **Docker** is running by running the following command in Terminal (macOS) or PowerShell (Windows):
-```
-docker ps
-```
-
-#### PostgreSQL
-1. Install **PostgreSQL** by following the steps at [this link](https://www.postgresql.org/download/) for either operating system
-- For macOS, you may also open a Terminal window (or use an existing one you have open) and run the following command (replaceing `vv` with version number):
-```
-brew install postgresql@vv
-```
-2. (Optional) Update [src/config/db_config.json](src/config/db_config.json) with your custom database credentials (username and password).
-3. In a new Terminal (macOS) or PowerShell (Windows) window, run the following command to create your credentials for the database: 
-```
-docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres
-```
-- Replace `[PASSWORD]` with the password specified in [src/config/db_config.json](src/config/db_config.json)
-- Replace `[USERNAME]` is the username specified in [src/config/db_config.json](src/config/db_config.json)
-5. Run the following command in your original Terminal (macOS) or PowerShell (Windows) window to create and populate the database:
-```
-npm run db:create-db
-```
-
-### Running
-
 Below are steps for running the application on web. Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
 
 #### macOS
 
-1. Open a Terminal window (or use an existing one you have open).
+1. Open a new Terminal window.
 2. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
 3. Navigate to the parent directory of the cloned repository and run the following command:
 ```
@@ -164,7 +63,7 @@ Below are steps for running the application on web. Mobile was tested using `Goo
 
 1. Open a new PowerShell window.
 2. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
-3. Navigate to the parent directory of the cloned repository and run the following command to run the backend:
+3. Navigate to the parent directory of the cloned repository and run the following command to run the backend service:
 ```
 python3 src/api/route.py
 ```
@@ -178,55 +77,30 @@ npm start
 
 ### Testing
 
-**For macOS only:** backend and frontend tests can be run together by running the following command from the parent directory of the cloned repository in a Terminal window:
-```
-./runTests.sh
-```
-If you choose to do this, please first follow Step 2 of under the Backend section below (only need to do this once).
-
-For both operating systems, tests can be run separately by following the below steps.
-
-#### Backend
-1. Open a Terminal (macOS) or PowerShell (Windows) window and navigate to the parent directory of the cloned repository and into [src/api](src/api):
-```
-cd src/api
-```
-2. (First time and **macOS only**) Run this command (replacing `/absolute/path/to` with your relevant path) so the test file recognizes `route.py` as the primary backend app for the unit test:
+#### macOS
+1. Open a Terminal window and navigate to the parent directory of the cloned repository.
+2. **First time only:** Navigate to [src/api](src/api) and run this command (replacing `/absolute/path/to` with your relevant path) so the test file recognizes `route.py` as the primary backend app for backend unit tests:
 ```
 export PYTHONPATH=/absolute/path/to/src/api
 ```
-3. Run the backend tests:
-- **For macOS:** Run the following command in [src/api](src/api) from Terminal:
+3. Backend and frontend tests can be run together by running the following command from the parent directory of the cloned repository in a Terminal window:
 ```
-pytest
+./runTests.sh
 ```
-- **For Windows:** Run the following command from the parent directory from PowerShell:
+
+#### Windows
+1. Open a PowerShell window and navigate to the parent directory of the cloned repository.
+2. Run the backend tests by running the following command:
 ```
 python -m pytest src/api/tests/test_route.py -v
 ```
-
-#### Frontend
-1. Open a Terminal (macOS) or PowerShell (Windows) window and navigate to the parent directory of the cloned repository.
-2. Run the following command: 
+3. Run the frontend tests by running the following command: 
 ```
 npm test -- --watchAll=false
 ```
 
 ### Troubleshooting
 
-#### General Setup
-1. **Port already in use:** Change the port in [src/config/local_api.json](src/config/local_api.json) (default 4000).
-
-#### Setup - macOS
-1. **zsh: command not found: (command_name):** Make sure that the library / package associated with the `(command name)` is installed using `brew install` or `npm install`.
-
-#### Setup - Windows
-1. **Python not found:** Make sure "Add Python to PATH" was checked during installation.
-3. **PowerShell execution policy error:** Run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`.
-4. **Docker won't start:** Make sure WSL 2 is installed and Docker Desktop is running.
-5. **npm command not found:** Restart PowerShell after installing Node.js.
-
-#### Application
 Error logs for any backend issues can be found in `src/api/backend-error.log` or `./backend-error.log`. For frontend issues, there are console logs that can be accessed by inspecting the page.
 
 ## Future Considerations
