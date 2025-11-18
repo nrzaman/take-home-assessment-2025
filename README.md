@@ -44,30 +44,36 @@ Below are steps for running the application on web. Mobile was tested using `Goo
 
 #### macOS
 
-1. Open a new Terminal window.
-2. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name in the file and choosing a different port number than `3000`, since that is what the client will be running on.
-3. Navigate to the parent directory of the cloned repository and run the following command:
+1. Ensure the database is running and populated by following the [Docker](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS#docker) and [PostgreSQL](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS#postgresql) setup steps.
+2. Open a new Terminal window.
+3. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name in the file and choosing a different port number than `3000`, since that is what the client will be running on.
+4. Navigate to the parent directory of the cloned repository and run the following command:
 ```
 ./startApplication.sh
 ```
 - This will launch the application in your default browser at `localhost:3000`.
-4. Use Ctrl + C in the Terminal window to exit the application.
+5. Use Ctrl + C in the Terminal window to exit the application.
+
+If you run into issues while running this, please see the [Troubleshooting](#troubleshooting) section below.
 
 #### Windows
 
-1. Open a new PowerShell window.
-2. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
-3. Navigate to the parent directory of the cloned repository and run the following command to run the backend service:
+1. Ensure the database is running and populated by following the [Docker](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-Windows#docker) and [PostgreSQL](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-Windows#postgresql) setup steps.
+2. Open a new PowerShell window.
+3. (Optional) Update [src/config/local_api.json](src/config/local_api.json) with your desired server host and server port. It is recommended to keep the host name and choose a different port number than `3000`, since that is what the client will be running on.
+4. Navigate to the parent directory of the cloned repository and run the following command to run the backend service:
 ```
 python3 src/api/route.py
 ```
-4. Open a new PowerShell window.
-5. Navigate to the parent directory of the cloned repository and run the following command to run the frontend:
+5. Open a new PowerShell window.
+6. Navigate to the parent directory of the cloned repository and run the following command to run the frontend:
 ```
 npm start
 ```
 - This will launch the application in your default browser at [http://localhost:3000](http://localhost:3000).
-6. Use Ctrl + C in each PowerShell window to exit the application.
+7. Use Ctrl + C in each PowerShell window to exit the application.
+
+If you run into issues while running this, please see the [Troubleshooting](#troubleshooting) section below.
 
 ### Testing
 
@@ -83,6 +89,8 @@ export PYTHONPATH=/absolute/path/to/src/api
 ./runTests.sh
 ```
 
+If you run into issues while running this, please see the [Troubleshooting](#troubleshooting) section below.
+
 #### Windows
 
 1. Open a PowerShell window and navigate to the parent directory of the cloned repository.
@@ -95,9 +103,12 @@ python -m pytest src/api/tests/test_route.py -v
 npm test -- --watchAll=false
 ```
 
+If you run into issues while running this, please see the [Troubleshooting](#troubleshooting) section below.
+
 ### Troubleshooting
 
-Error logs for any backend issues can be found in `src/api/backend-error.log` or `./backend-error.log`. For frontend issues, there are console logs that can be accessed by inspecting the page.
+1. If you notice any Python errors in your console or do not see data populating the table, you may not have the Python virtual machine set up. This is common if you restart. Please follow the [Python (macOS)](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS#python) or [Python (Windows)](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-Windows#python) steps to reset and reactivate your virtual environment, and install Python dependencies.
+2. Error logs for any backend issues can be found in `src/api/backend-error.log` or `./backend-error.log`. For frontend issues, there are console logs that can be accessed by inspecting the page.
 
 ## Future Considerations
 
