@@ -144,12 +144,15 @@ Both backend and frontend tests can be run together by running the following com
 ```
 ./runTests.sh
 ```
-If you choose to do this, please first follow Step 2 of under the Backend section below.
+If you choose to do this, please first follow Step 2 of under the Backend section below (only need to do this once).
 
 Otherwise, tests can be run separately by following the below steps.
 
 #### Backend
-1. Open a Terminal window and navigate to the parent directory of the cloned repository and into [src/api](src/api).
+1. Open a Terminal window and navigate to the parent directory of the cloned repository and into [src/api](src/api):
+```
+cd src/api
+```
 2. (First time only) Run this command (using your relevant path) so the test file recognizes `route.py` as the primary backend app for the unit test:
 ```
 export PYTHONPATH=/path/to/src/api
