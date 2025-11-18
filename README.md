@@ -61,7 +61,7 @@ brew install python
 ```
 python --version
 ```
-4. Once confirmed, a Python virtual environment needs to be installed. Run the following command:
+4. Once confirmed, a Python virtual environment needs to be installed. Run the following command to do so:
 ```
 python3 -m venv .venv
 ```
@@ -79,7 +79,7 @@ pip3 install -r requirements.txt
 #### NPM
 1. Install `npm` by following the instructions linked [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 2. In a Terminal window, navigate to the parent directory of where you cloned the repository (most likely named `take-home-assessment-2025`).
-2. Run the following command:
+2. Run the following command to install dependencies:
 ```
 npm install --no-save
 ```
@@ -94,7 +94,7 @@ brew install docker
 ```
 brew install colima
 ```
-4. Run the following command to start docker:
+4. Run the following command to start Docker:
 ```
 colima start
 ```
