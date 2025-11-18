@@ -42,8 +42,8 @@ This folder includes test coverage and optimization reports, as well as a `.zip`
 ## Prerequisite Environment Setup
 Prior to running this project locally, there are prerequisite steps that need to be completed prior to launching the application to set up the environment. Please reference the below wikis based on your operating system to set up your local environment.
 
-- [Setup Steps - macOS](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS)
-- [Setup Steps - Windows](https://github.com/nrzaman/take-home-assessment-2025/wiki/Setup-Steps-%E2%80%90-macOS)
+- [Setup Steps - macOS](https://github.com/nrzaman/take-home-assessment-2025/wiki/1.-Setup-Steps-%E2%80%90-macOS)
+- [Setup Steps - Windows](https://github.com/nrzaman/take-home-assessment-2025/wiki/2.-Setup-Steps-%E2%80%90-Windows)
 
 ## Running the Application
 Below are steps for running the application on web. Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
