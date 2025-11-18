@@ -56,7 +56,7 @@ These steps are required to be able to run the application on your local machine
 ```
 brew install python
 ```
-- You may also follow the steps documents at [this link](https://docs.python.org/3/using/mac.html).
+- You may also follow the steps documented at [this link](https://docs.python.org/3/using/mac.html).
 3. Confirm Python installation by running:
 ```
 python --version
@@ -111,13 +111,13 @@ brew install postgresql@vv
 ```
 - Replace `vv` with the version number you would like to install.
 3. (Optional) Update `src/config/db_config.json` with your custom database credentials (username and password).
-4. In a new Terminal window, run the following command: 
+4. In a new Terminal window, run the following command to create your credentials for the database: 
 ```
 docker run -p 5432:5432 -e POSTGRES_PASSWORD=[PASSWORD] -e POSTGRES_USER=[USERNAME] postgres
 ```
 - Replace `[PASSWORD]` with the password specified in `src/config/db_config.json`
 - Replace `[USERNAME]` is the username specified in `src/config/db_config.json`
-5. Run the following command in your original Terminal window:
+5. Run the following command in your original Terminal window to create and populate the database:
 ```
 npm run db:create-db
 ```
@@ -130,6 +130,7 @@ npm run db:create-db
 ```
 ./startApplication.sh
 ```
+- This will launch the application in your default browser at `localhost:3000`.
 4. If needed, Ctrl + C in the Terminal window to exit the application.
 
 Mobile was tested using `Google Chrome > Inspect > Toggle device toolbar`. A refresh may need to be done for changes to go into effect.
